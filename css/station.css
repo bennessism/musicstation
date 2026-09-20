@@ -371,6 +371,7 @@ footer {
 
   .radio-stage {
     padding-left: 0;
+    flex-direction: column;
   }
 
   .station-console {
@@ -378,25 +379,30 @@ footer {
     grid-template-columns: 1fr;
     gap: 30px;
     padding: 42px 24px 34px;
+    order: 1;
   }
 
   .volume-control {
-    left: 8px;
-    transform: translate(-6%, 110%);
+    position: static;
+    order: 2;
+    margin-top: 28px;
+    transform: none;
   }
 
   .station-mark {
-    padding: 0 28px;
+    align-items: center;
+    padding: 0;
+    text-align: center;
   }
 
   .channel-field {
-    width: min(224px, 72%);
-    margin: 0 0 0 auto;
+    width: min(224px, 100%);
+    margin: 0 auto;
   }
 
   .radio-readout {
     width: 94%;
-    margin-top: 92px;
+    margin-top: 44px;
   }
 }
 
@@ -422,8 +428,8 @@ footer {
   }
 
   .volume-control {
-    left: 2px;
-    transform: translate(-4%, 128%);
+    margin-top: 24px;
+    transform: none;
   }
 
   .volume-dial {

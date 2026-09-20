@@ -1,4 +1,4 @@
-const CACHE_NAME = "bennessism-station-v6";
+const CACHE_NAME = "bennessism-station-v7";
 const APP_SHELL = [
   "./",
   "./index.html",
