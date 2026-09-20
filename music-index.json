@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "channels": {
+    "ads": [
+      {
+        "filename": "cordless-vacuum.mp3",
+        "durationSeconds": 60.096,
+        "sourceSha": "4de7d9103084b07e6199c7fcfdb7d1f7232cddd4"
+      },
+      {
+        "filename": "zus-coffee.mp3",
+        "durationSeconds": 18.338,
+        "sourceSha": "c4684b28bf639ba3cf215e8a55dbde77c818c642"
+      }
+    ],
+    "gothic": [
+      {
+        "filename": "cold-stone-altars.mp3",
+        "durationSeconds": 174.211,
+        "sourceSha": "af3739b85b1a4c99fd40091f3d0e13a60dd2193d"
+      },
+      {
+        "filename": "the-pale-chapel-at-midnight.mp3",
+        "durationSeconds": 182.7,
+        "sourceSha": "b144ab4fd76927ba4a66c6218648b9b8473d027b"
+      },
+      {
+        "filename": "the-rain-soaked-nave.mp3",
+        "durationSeconds": 154.88,
+        "sourceSha": "ffc47bc54f40207ce92564c0350eb19cca62b8cc"
+      },
+      {
+        "filename": "the-weight-of-marble.mp3",
+        "durationSeconds": 161.985,
+        "sourceSha": "438937eeb64948e3dc40c0d3c3d1202bacd69330"
+      }
+    ],
+    "meditation": [
+      {
+        "filename": "clock.mp3",
+        "durationSeconds": 154.08,
+        "sourceSha": "2758af20ad0af77286207b00173639aea0fd523b"
+      },
+      {
+        "filename": "fantasy-rain-meditation.mp3",
+        "durationSeconds": 197.856,
+        "sourceSha": "746947fdcd369328ea0628041bc5034a48b40c47"
+      },
+      {
+        "filename": "meditation-with-the-birds.mp3",
+        "durationSeconds": 173.976,
+        "sourceSha": "c95eee0a16e54a7814cb80918d1e65125ec4b67e"
+      },
+      {
+        "filename": "morning-mist-raising.mp3",
+        "durationSeconds": 207,
+        "sourceSha": "3c173055e0585ccb1d9073cef4f2f74bdbd9808f"
+      },
+      {
+        "filename": "strings-and-waves.mp3",
+        "durationSeconds": 116.712,
+        "sourceSha": "a44b32b31a98ff51a24af1b00aa72c0b2d3800c3"
+      },
+      {
+        "filename": "tibetan-singing-bowls.mp3",
+        "durationSeconds": 165.36,
+        "sourceSha": "227c196e371cc8c362955da0df0bf8ee5fb365f7"
+      }
+    ],
+    "修仙回来（AI短剧）": [
+      {
+        "filename": "EP001.m4a",
+        "durationSeconds": 900.332,
+        "sourceSha": "85cca06e419ef773c7725b114fb0957fe34c5811"
+      }
+    ]
+  }
+}
