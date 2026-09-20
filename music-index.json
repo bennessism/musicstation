@@ -46,7 +46,7 @@
           "title": "Cold Stone Altars",
           "durationSeconds": 174.211,
           "sourceSha": "af3739b85b1a4c99fd40091f3d0e13a60dd2193d",
-          "order": 0,
+          "order": 1,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -56,7 +56,7 @@
           "title": "The Pale Chapel At Midnight",
           "durationSeconds": 182.7,
           "sourceSha": "b144ab4fd76927ba4a66c6218648b9b8473d027b",
-          "order": 1,
+          "order": 2,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -66,7 +66,7 @@
           "title": "The Rain Soaked Nave",
           "durationSeconds": 154.88,
           "sourceSha": "ffc47bc54f40207ce92564c0350eb19cca62b8cc",
-          "order": 2,
+          "order": 3,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -76,7 +76,7 @@
           "title": "The Weight Of Marble",
           "durationSeconds": 161.985,
           "sourceSha": "438937eeb64948e3dc40c0d3c3d1202bacd69330",
-          "order": 3,
+          "order": 4,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -107,7 +107,7 @@
           "title": "Meditation With The Birds",
           "durationSeconds": 173.976,
           "sourceSha": "c95eee0a16e54a7814cb80918d1e65125ec4b67e",
-          "order": 2,
+          "order": 1,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -117,7 +117,7 @@
           "title": "Strings And Waves",
           "durationSeconds": 116.712,
           "sourceSha": "a44b32b31a98ff51a24af1b00aa72c0b2d3800c3",
-          "order": 3,
+          "order": 2,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -127,7 +127,7 @@
           "title": "Tibetan Singing Bowls",
           "durationSeconds": 165.36,
           "sourceSha": "227c196e371cc8c362955da0df0bf8ee5fb365f7",
-          "order": 4,
+          "order": 3,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
