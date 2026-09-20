@@ -3,7 +3,7 @@
   --ink: #201a12;
   --paper: #d8c9a9;
   --paper-bright: #f0e5cb;
-  --paper-dim: #8d8068;
+  --paper-dim: #a09276;
   --amber: #d98a2b;
   --amber-soft: rgba(217, 138, 43, 0.24);
   --panel: #17130e;
@@ -59,8 +59,8 @@ button {
 .eyebrow {
   margin: 0 0 clamp(40px, 8vh, 88px);
   color: var(--paper-dim);
-  font-size: 0.67rem;
-  letter-spacing: 0.25em;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
@@ -122,8 +122,8 @@ button {
   margin-top: 0.56em;
   padding-left: 0.2em;
   color: var(--paper-dim);
-  font-size: clamp(0.65rem, 1.3vw, 1rem);
-  letter-spacing: 0.31em;
+  font-size: clamp(0.68rem, 1.3vw, 1rem);
+  letter-spacing: 0.25em;
   text-transform: lowercase;
 }
 
@@ -175,9 +175,9 @@ button {
 .channel-name {
   display: block;
   overflow: hidden;
-  color: rgba(216, 201, 169, 0.76);
-  font-size: clamp(0.68rem, 1.4vw, 0.9rem);
-  letter-spacing: 0.14em;
+  color: rgba(216, 201, 169, 0.88);
+  font-size: clamp(0.72rem, 1.4vw, 0.94rem);
+  letter-spacing: 0.11em;
   text-overflow: ellipsis;
   text-transform: uppercase;
   white-space: nowrap;
@@ -245,8 +245,8 @@ button {
 .control-label,
 .volume-value {
   color: var(--paper-dim);
-  font-size: 0.58rem;
-  letter-spacing: 0.2em;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
   text-transform: uppercase;
 }
 
@@ -299,8 +299,8 @@ button {
   justify-content: center;
   gap: 10px;
   color: var(--paper-dim);
-  font-size: 0.61rem;
-  letter-spacing: 0.18em;
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
@@ -345,16 +345,16 @@ button {
 .channel-description {
   margin: 12px 0 0;
   color: var(--paper-dim);
-  font-size: clamp(0.62rem, 1.3vw, 0.73rem);
+  font-size: clamp(0.68rem, 1.3vw, 0.78rem);
   line-height: 1.7;
 }
 
 .tuning-hint {
   margin: 22px 0 0;
   text-align: center;
-  color: rgba(141, 128, 104, 0.65);
-  font-size: 0.57rem;
-  letter-spacing: 0.08em;
+  color: rgba(160, 146, 118, 0.76);
+  font-size: 0.61rem;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
 }
 
@@ -362,9 +362,9 @@ footer {
   margin-top: clamp(54px, 10vh, 92px);
   display: flex;
   justify-content: center;
-  color: rgba(141, 128, 104, 0.65);
-  font-size: 0.55rem;
-  letter-spacing: 0.14em;
+  color: rgba(160, 146, 118, 0.7);
+  font-size: 0.59rem;
+  letter-spacing: 0.11em;
   text-transform: uppercase;
 }
 
@@ -428,7 +428,7 @@ footer {
   }
 
   .subtitle {
-    font-size: 0.54rem;
+    font-size: 0.62rem;
   }
 
   .channel-name {
