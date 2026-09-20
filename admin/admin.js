@@ -265,7 +265,7 @@ async function saveChannelSettings(event) {
     });
 
     await batch.commit();
-    setFormMessage("Channel saved.", "success");
+    setFormMessage("Channel saved. Public details refresh from GitHub within 15 minutes.", "success");
   } catch (error) {
     console.error(error);
     setFormMessage("Could not save. Check that the Firestore rules were published.", "error");

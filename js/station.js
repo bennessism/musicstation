@@ -12,6 +12,7 @@ const elements = {
   channelStatus: document.querySelector("#channelStatus"),
   broadcastTime: document.querySelector("#broadcastTime"),
   trackTitle: document.querySelector("#trackTitle"),
+  trackLink: document.querySelector("#trackLink"),
   channelDescription: document.querySelector("#channelDescription"),
   volumeDial: document.querySelector("#volumeDial"),
   volumeValue: document.querySelector("#volumeValue"),
@@ -60,6 +61,15 @@ function renderState({ isPowered, isPlaying, isTuning, track }) {
       : resumeExpected
         ? "Tap to resume"
         : "Choose a channel to listen";
+  const showLink = Boolean(isPlaying && !isTuning && track?.targetUrl);
+  elements.trackLink.hidden = !showLink;
+  if (showLink) {
+    elements.trackLink.href = track.targetUrl;
+    elements.trackLink.textContent = track.linkLabel || "Learn more";
+  } else {
+    elements.trackLink.removeAttribute("href");
+    elements.trackLink.textContent = "";
+  }
   document.title = isPlaying && track ? `${track.title} — BENNESSism` : "BENNESSism | Music Station";
 }
 

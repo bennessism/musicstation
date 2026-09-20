@@ -7,6 +7,8 @@ on:
       - "music/**"
       - "scripts/build-music-index.mjs"
       - ".github/workflows/music-index.yml"
+  schedule:
+    - cron: "*/15 * * * *"
   workflow_dispatch:
 
 permissions:

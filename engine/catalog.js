@@ -60,9 +60,9 @@ function decorateChannel(channel) {
   const details = CHANNEL_DETAILS[channel.id] || {};
   return {
     ...channel,
-    name: details.name || titleCase(channel.id),
-    description: details.description || "Independent continuous radio.",
-    broadcastLabel: details.broadcastLabel || "24 hours",
+    name: channel.name || details.name || titleCase(channel.id),
+    description: channel.description || details.description || "Independent continuous radio.",
+    broadcastLabel: channel.broadcastLabel || details.broadcastLabel || "24 hours",
     tracks: channel.tracks.map((track) =>
       typeof track === "string" ? trackFromName(channel.id, track) : track,
     ),
@@ -111,13 +111,30 @@ async function loadFromIndex() {
 
   const index = await response.json();
   return Object.entries(index.channels || {})
-    .map(([channelId, items]) => ({
-      id: channelId,
-      tracks: items.map((item) => ({
-        ...trackFromName(channelId, item.filename, null, item.sourceSha || ""),
-        duration: Number(item.durationSeconds) || undefined,
-      })),
-    }))
+    .map(([channelId, entry]) => {
+      const channel = Array.isArray(entry) ? { tracks: entry } : entry;
+      const broadcastLabel = channel.broadcastMode === "scheduled" && channel.scheduleStart && channel.scheduleEnd
+        ? `${channel.scheduleStart}–${channel.scheduleEnd}`
+        : channel.broadcastMode === "off"
+          ? "Off air"
+          : "24 hours";
+      return {
+        id: channelId,
+        name: channel.name || "",
+        description: channel.description || "",
+        broadcastMode: channel.broadcastMode || "always",
+        broadcastLabel,
+        tracks: (channel.tracks || []).map((item) => ({
+          ...trackFromName(channelId, item.filename, null, item.sourceSha || ""),
+          title: item.title || titleCase(item.filename.replace(/\.[^.]+$/, "")),
+          duration: Number(item.durationSeconds) || undefined,
+          type: item.type || "music",
+          targetUrl: item.targetUrl || "",
+          linkLabel: item.linkLabel || "",
+        })),
+      };
+    })
+    .filter((channel) => channel.broadcastMode !== "off")
     .filter((channel) => channel.tracks.length)
     .map(decorateChannel);
 }

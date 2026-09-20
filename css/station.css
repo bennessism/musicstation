@@ -349,6 +349,27 @@ button {
   white-space: nowrap;
 }
 
+.track-link {
+  display: inline-block;
+  margin-top: 11px;
+  color: var(--amber);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.track-link:hover,
+.track-link:focus-visible {
+  color: var(--paper-bright);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.track-link[hidden] {
+  display: none;
+}
+
 .channel-description {
   margin: 12px 0 0;
   color: var(--paper-dim);
