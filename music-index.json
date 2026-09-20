@@ -52,11 +52,21 @@
           "linkLabel": ""
         },
         {
+          "filename": "measured-knocks-in-stone.mp3",
+          "title": "Measured Knocks In Stone",
+          "durationSeconds": 158.328,
+          "sourceSha": "0ee29e5d3b59df5a0f1d2b6f3bb981f34c32df48",
+          "order": 2,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
           "filename": "the-pale-chapel-at-midnight.mp3",
           "title": "The Pale Chapel At Midnight",
           "durationSeconds": 182.7,
           "sourceSha": "b144ab4fd76927ba4a66c6218648b9b8473d027b",
-          "order": 2,
+          "order": 3,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -66,7 +76,7 @@
           "title": "The Rain Soaked Nave",
           "durationSeconds": 154.88,
           "sourceSha": "ffc47bc54f40207ce92564c0350eb19cca62b8cc",
-          "order": 3,
+          "order": 4,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -76,7 +86,7 @@
           "title": "The Weight Of Marble",
           "durationSeconds": 161.985,
           "sourceSha": "438937eeb64948e3dc40c0d3c3d1202bacd69330",
-          "order": 4,
+          "order": 5,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -86,7 +96,7 @@
           "title": "Twilight At The Iron Gate",
           "durationSeconds": 156.212,
           "sourceSha": "2700a8fbab4c0c24b89935c60e84fa56d413ec0d",
-          "order": 5,
+          "order": 6,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
