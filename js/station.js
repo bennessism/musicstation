@@ -15,8 +15,6 @@ const elements = {
   channelDescription: document.querySelector("#channelDescription"),
   volumeDial: document.querySelector("#volumeDial"),
   volumeValue: document.querySelector("#volumeValue"),
-  powerButton: document.querySelector("#powerButton"),
-  powerLabel: document.querySelector("#powerLabel"),
   localTime: document.querySelector("#localTime"),
 };
 
@@ -39,10 +37,8 @@ function renderChannel(channel) {
 
 function renderState({ isPowered, isPlaying, track }) {
   elements.radio.classList.toggle("is-playing", isPlaying);
-  elements.powerButton.setAttribute("aria-pressed", String(isPowered));
-  elements.powerLabel.textContent = isPowered ? "Power on" : "Power off";
-  elements.channelStatus.textContent = isPlaying ? "On air" : isPowered ? "Tuning" : "Standby";
-  elements.trackTitle.textContent = isPowered && track ? track.title : "Turn on the station";
+  elements.channelStatus.textContent = isPlaying ? "On air" : isPowered ? "Tuning" : "Turn dial";
+  elements.trackTitle.textContent = isPowered && track ? track.title : "Turn the dial to listen";
   document.title = isPlaying && track ? `${track.title} — BENNESSism` : "BENNESSism | Music Station";
 }
 
@@ -52,18 +48,24 @@ radio.addEventListener("volumechange", (event) => {
   elements.volumeValue.textContent = String(event.detail);
 });
 
-createTuningDial(elements.tuner, elements.ring, (direction) => {
-  if (!radio.channels.length) return;
-  activeIndex = (activeIndex + direction + radio.channels.length) % radio.channels.length;
-  radio.selectChannel(activeIndex);
-});
+createTuningDial(
+  elements.tuner,
+  elements.ring,
+  (direction) => {
+    if (!radio.channels.length) return;
+    activeIndex = (activeIndex + direction + radio.channels.length) % radio.channels.length;
+    radio.selectChannel(activeIndex);
+  },
+  () => {
+    if (!radio.isPowered && radio.channels.length) radio.powerOn();
+  },
+);
 
 createVolumeDial(elements.volumeDial, radio.volume, (value) => radio.setVolume(value));
 
-elements.powerButton.addEventListener("click", () => radio.togglePower());
-
 elements.channelWindow.addEventListener("click", (event) => {
   if (event.detail === 0 && radio.channels.length) {
+    if (!radio.isPowered) radio.powerOn();
     activeIndex = (activeIndex + 1) % radio.channels.length;
     radio.selectChannel(activeIndex);
   }

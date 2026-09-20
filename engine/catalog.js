@@ -1,6 +1,7 @@
 const REPOSITORY = "BENNESSism/musicstation";
 const API_ROOT = `https://api.github.com/repos/${REPOSITORY}/contents/music`;
 const AUDIO_PATTERN = /\.(mp3|m4a|aac|ogg|wav|flac)$/i;
+const MINIMUM_AUDIO_BYTES = 1024;
 
 const FALLBACK_CHANNELS = [
   {
@@ -86,7 +87,12 @@ async function loadFromGitHub() {
     folders.map(async (folder) => {
       const items = await fetchJson(folder.url);
       const tracks = items
-        .filter((item) => item.type === "file" && AUDIO_PATTERN.test(item.name))
+        .filter(
+          (item) =>
+            item.type === "file" &&
+            item.size >= MINIMUM_AUDIO_BYTES &&
+            AUDIO_PATTERN.test(item.name),
+        )
         .sort((a, b) => a.name.localeCompare(b.name))
         .map((item) => trackFromName(folder.name, item.name, item.download_url));
 

@@ -91,32 +91,29 @@ button {
 .tuner-ring {
   position: absolute;
   inset: 0;
-  border: clamp(2px, 0.26vw, 4px) solid var(--line);
+  border: clamp(4px, 0.55vw, 7px) solid rgba(216, 201, 169, 0.64);
   border-radius: 50%;
   box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.65),
-    inset 0 0 44px rgba(216, 201, 169, 0.035),
-    0 0 38px rgba(216, 201, 169, 0.035);
+    0 0 0 1px rgba(0, 0, 0, 0.8),
+    0 0 0 10px rgba(216, 201, 169, 0.035),
+    inset 0 0 44px rgba(216, 201, 169, 0.045),
+    0 0 38px rgba(216, 201, 169, 0.05);
   transition: transform 700ms cubic-bezier(0.16, 0.84, 0.28, 1);
   will-change: transform;
 }
 
-.tuner-ring::before,
-.tuner-ring::after {
-  position: absolute;
-  left: 50%;
-  width: 1px;
-  height: 16px;
-  content: "";
-  background: var(--paper-dim);
-}
-
 .tuner-ring::before {
-  top: -9px;
-}
-
-.tuner-ring::after {
-  bottom: -9px;
+  position: absolute;
+  inset: -17px;
+  border-radius: 50%;
+  content: "";
+  background: repeating-conic-gradient(
+    from -1deg,
+    rgba(216, 201, 169, 0.68) 0 1deg,
+    transparent 1deg 10deg
+  );
+  mask: radial-gradient(ellipse at center, transparent 0 69%, #000 69.5% 72%, transparent 72.5%);
+  -webkit-mask: radial-gradient(ellipse at center, transparent 0 69%, #000 69.5% 72%, transparent 72.5%);
 }
 
 .station-mark {
@@ -214,8 +211,7 @@ button {
 }
 
 .volume-dial:focus-visible,
-.channel-window:focus-visible,
-.power-switch:focus-visible {
+.channel-window:focus-visible {
   outline: 2px solid var(--amber);
   outline-offset: 5px;
 }
@@ -288,66 +284,19 @@ button {
   line-height: 1.7;
 }
 
-.power-row {
-  margin-top: 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-}
-
-.power-switch {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  padding: 0;
-  border: 0;
-  color: var(--paper-dim);
-  background: none;
-  cursor: pointer;
-  font-size: 0.61rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.power-knob {
-  width: 25px;
-  height: 13px;
-  padding: 2px;
-  border: 1px solid var(--paper-dim);
-  border-radius: 9px;
-}
-
-.power-knob::after {
-  display: block;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  content: "";
-  background: var(--paper-dim);
-  transition: 220ms ease;
-}
-
-.power-switch[aria-pressed="true"] {
-  color: var(--paper);
-}
-
-.power-switch[aria-pressed="true"] .power-knob::after {
-  background: var(--amber);
-  box-shadow: 0 0 8px var(--amber-soft);
-  transform: translateX(11px);
-}
-
 .tuning-hint {
+  margin: 22px 0 0;
+  text-align: center;
   color: rgba(141, 128, 104, 0.65);
   font-size: 0.57rem;
   letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 footer {
   margin-top: clamp(54px, 10vh, 92px);
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   color: rgba(141, 128, 104, 0.65);
   font-size: 0.55rem;
   letter-spacing: 0.14em;

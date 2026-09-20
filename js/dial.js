@@ -9,7 +9,7 @@ function shortestAngleDelta(current, previous) {
   return delta;
 }
 
-export function createTuningDial(element, ring, onStep) {
+export function createTuningDial(element, ring, onStep, onActivate) {
   let pointerId = null;
   let lastAngle = 0;
   let accumulated = 0;
@@ -23,6 +23,7 @@ export function createTuningDial(element, ring, onStep) {
   }
 
   element.addEventListener("pointerdown", (event) => {
+    onActivate?.();
     const bounds = element.getBoundingClientRect();
     pointerId = event.pointerId;
     lastAngle = normalizedAngle(event.clientX, event.clientY, bounds.left + bounds.width / 2, bounds.top + bounds.height / 2);
@@ -63,6 +64,7 @@ export function createTuningDial(element, ring, onStep) {
     "wheel",
     (event) => {
       event.preventDefault();
+      onActivate?.();
       const direction = event.deltaY > 0 || event.deltaX > 0 ? 1 : -1;
       visualRotation += direction * stepAngle;
       setRotation(visualRotation);
@@ -74,6 +76,7 @@ export function createTuningDial(element, ring, onStep) {
   element.addEventListener("keydown", (event) => {
     if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key)) return;
     event.preventDefault();
+    onActivate?.();
     const direction = event.key === "ArrowRight" || event.key === "ArrowDown" ? 1 : -1;
     visualRotation += direction * stepAngle;
     setRotation(visualRotation);
