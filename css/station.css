@@ -79,12 +79,10 @@ button {
 
 .station-console {
   position: relative;
-  width: min(88vw, 940px);
-  min-height: clamp(190px, 28vw, 270px);
-  display: grid;
-  grid-template-columns: minmax(250px, 1fr) auto minmax(190px, 0.72fr);
+  width: min(76vw, 760px);
+  min-height: clamp(230px, 30vw, 290px);
+  display: flex;
   align-items: center;
-  gap: clamp(20px, 4vw, 54px);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   background:
@@ -108,8 +106,12 @@ button {
 .station-mark {
   display: flex;
   flex-direction: column;
-  padding-left: clamp(28px, 5vw, 62px);
   pointer-events: none;
+}
+
+.station-identity {
+  width: min(68%, 470px);
+  padding-left: clamp(28px, 6vw, 72px);
 }
 
 .brand {
@@ -134,8 +136,7 @@ button {
   position: relative;
   width: clamp(164px, 21vw, 208px);
   min-height: 54px;
-  justify-self: end;
-  margin-right: clamp(18px, 4vw, 48px);
+  margin-top: clamp(24px, 4vw, 38px);
   padding: 0 34px 0 18px;
   overflow: hidden;
   border: 1px solid rgba(216, 201, 169, 0.13);
@@ -238,8 +239,10 @@ button {
 }
 
 .volume-control {
-  position: relative;
-  z-index: 1;
+  position: absolute;
+  right: clamp(24px, 4vw, 46px);
+  bottom: clamp(24px, 4vw, 40px);
+  z-index: 3;
   display: grid;
   justify-items: center;
   gap: 10px;
@@ -383,11 +386,14 @@ footer {
     height: 100svh;
     min-height: 0;
     padding: 18px 0;
-    justify-content: center;
+    justify-content: space-between;
   }
 
   .eyebrow {
-    display: none;
+    display: block;
+    margin: 0;
+    font-size: 0.59rem;
+    letter-spacing: 0.14em;
   }
 
   .radio {
@@ -399,17 +405,22 @@ footer {
   }
 
   .station-console {
-    width: min(94vw, 690px);
-    grid-template-columns: minmax(150px, 1fr) auto minmax(150px, 0.8fr);
-    gap: clamp(12px, 3vw, 24px);
-    min-height: 172px;
-    padding: 22px 16px;
+    width: min(92vw, 610px);
+    min-height: 230px;
+    padding: 28px 24px;
   }
 
   .volume-control {
-    position: static;
+    position: absolute;
+    right: 24px;
+    bottom: 24px;
     margin: 0;
     transform: none;
+  }
+
+  .station-identity {
+    width: calc(100% - 76px);
+    padding: 0;
   }
 
   .station-mark {
@@ -419,8 +430,8 @@ footer {
   }
 
   .channel-field {
-    width: min(180px, 100%);
-    margin: 0;
+    width: min(190px, 100%);
+    margin: 30px 0 0;
   }
 
   .radio-readout {
@@ -436,16 +447,12 @@ footer {
   }
 
   .station-console {
-    grid-template-columns: auto minmax(0, 1fr);
-    gap: 18px 20px;
-    min-height: 210px;
+    min-height: 222px;
     padding: 24px 20px;
   }
 
-  .station-mark {
-    grid-column: 1 / -1;
-    align-items: center;
-    text-align: center;
+  .station-identity {
+    width: calc(100% - 68px);
   }
 
   .brand {
@@ -461,7 +468,8 @@ footer {
   }
 
   .volume-control {
-    justify-self: end;
+    right: 20px;
+    bottom: 22px;
     margin: 0;
     transform: none;
   }
@@ -471,8 +479,8 @@ footer {
   }
 
   .channel-field {
-    justify-self: start;
-    width: min(176px, 100%);
+    width: min(168px, 100%);
+    margin-top: 28px;
   }
 
   .tuning-hint {
@@ -480,7 +488,7 @@ footer {
   }
 
   footer {
-    display: none;
+    margin-top: 0;
   }
 }
 

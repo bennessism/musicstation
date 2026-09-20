@@ -27,9 +27,19 @@
       <section class="radio" aria-label="BENNESSism Music Station">
         <div class="radio-stage">
           <div class="station-console">
-            <div class="station-mark" aria-hidden="true">
-              <span class="brand">BENNESSism</span>
-              <span class="subtitle">music station</span>
+            <div class="station-identity">
+              <div class="station-mark" aria-hidden="true">
+                <span class="brand">BENNESSism</span>
+                <span class="subtitle">music station</span>
+              </div>
+
+              <div class="channel-field">
+                <span class="channel-name" id="channelName">Tuning</span>
+                <span class="channel-arrows">
+                  <button id="channelUp" type="button" aria-label="Next channel">▲</button>
+                  <button id="channelDown" type="button" aria-label="Previous channel">▼</button>
+                </span>
+              </div>
             </div>
 
             <section class="volume-control" aria-label="Volume control">
@@ -48,14 +58,6 @@
               </button>
               <output class="volume-value" id="volumeValue">65</output>
             </section>
-
-            <div class="channel-field">
-              <span class="channel-name" id="channelName">Tuning</span>
-              <span class="channel-arrows">
-                <button id="channelUp" type="button" aria-label="Next channel">▲</button>
-                <button id="channelDown" type="button" aria-label="Previous channel">▼</button>
-              </span>
-            </div>
           </div>
         </div>
 
@@ -68,7 +70,7 @@
           </div>
           <p class="track-title" id="trackTitle">Turn on the station</p>
           <p class="channel-description" id="channelDescription">
-            Turn the large dial to choose a channel.
+            Choose a channel to tune in.
           </p>
         </div>
 
