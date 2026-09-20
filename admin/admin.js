@@ -23,10 +23,8 @@ const loginPanel = document.querySelector("#loginPanel");
 const identityPanel = document.querySelector("#identityPanel");
 const googleLogin = document.querySelector("#googleLogin");
 const signOutButton = document.querySelector("#signOut");
-const copyUidButton = document.querySelector("#copyUid");
 const authError = document.querySelector("#authError");
 const userEmail = document.querySelector("#userEmail");
-const userUid = document.querySelector("#userUid");
 const channelForm = document.querySelector("#channelForm");
 const channelSelect = document.querySelector("#channelSelect");
 const refreshChannels = document.querySelector("#refreshChannels");
@@ -310,19 +308,6 @@ googleLogin.addEventListener("click", async () => {
 
 signOutButton.addEventListener("click", () => signOut(auth));
 
-copyUidButton.addEventListener("click", async () => {
-  const uid = userUid.textContent;
-  try {
-    await navigator.clipboard.writeText(uid);
-    copyUidButton.textContent = "Copied";
-    setTimeout(() => {
-      copyUidButton.textContent = "Copy UID";
-    }, 1600);
-  } catch {
-    showError("Could not copy automatically. Select the UID and copy it manually.");
-  }
-});
-
 onAuthStateChanged(auth, async (user) => {
   if (user && !isAdmin(user)) {
     await rejectUnauthorizedUser();
@@ -334,11 +319,9 @@ onAuthStateChanged(auth, async (user) => {
 
   if (isAdmin(user)) {
     userEmail.textContent = user.email || "Google account";
-    userUid.textContent = user.uid;
     await initializeEditor();
   } else {
     userEmail.textContent = "—";
-    userUid.textContent = "—";
   }
 });
 
