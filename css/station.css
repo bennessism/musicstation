@@ -385,19 +385,26 @@ footer {
     width: min(100% - 24px, 640px);
     height: 100svh;
     min-height: 0;
-    padding: 18px 0;
-    justify-content: space-between;
+    padding-top: max(18px, env(safe-area-inset-top));
+    padding-bottom: max(18px, env(safe-area-inset-bottom));
+    display: grid;
+    grid-template-rows: auto 1fr auto;
   }
 
   .eyebrow {
     display: block;
     margin: 0;
-    font-size: 0.59rem;
+    position: relative;
+    z-index: 2;
+    color: rgba(216, 201, 169, 0.88);
+    font-size: 0.62rem;
+    line-height: 1.5;
     letter-spacing: 0.14em;
   }
 
   .radio {
     margin: 0;
+    align-self: center;
   }
 
   .radio-stage {
@@ -443,7 +450,8 @@ footer {
 
 @media (max-width: 480px) {
   .station-shell {
-    padding: 14px 0;
+    padding-top: max(14px, env(safe-area-inset-top));
+    padding-bottom: max(14px, env(safe-area-inset-bottom));
   }
 
   .station-console {
