@@ -3,7 +3,7 @@
   "channels": {
     "ads": {
       "name": "Trending",
-      "description": "Check out offers, etc",
+      "description": "Check out offers, etc.",
       "broadcastMode": "always",
       "scheduleStart": "",
       "scheduleEnd": "",
@@ -24,7 +24,7 @@
     },
     "featured": {
       "name": "Featured",
-      "description": "Independent continuous radio.",
+      "description": "Favorite songs.",
       "broadcastMode": "always",
       "scheduleStart": "",
       "scheduleEnd": "",
