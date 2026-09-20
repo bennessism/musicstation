@@ -49,19 +49,15 @@
               <span class="subtitle">music station</span>
             </div>
 
-            <button
+            <div
               class="channel-field"
-              id="channelSlider"
-              type="button"
-              aria-label="Channel tuner. Slide up or down."
-              aria-orientation="vertical"
-              role="slider"
             >
               <span class="channel-name" id="channelName">Tuning</span>
-              <span class="slider-track" aria-hidden="true">
-                <span class="slider-thumb" id="sliderThumb"></span>
+              <span class="channel-arrows">
+                <button id="channelUp" type="button" aria-label="Next channel">▲</button>
+                <button id="channelDown" type="button" aria-label="Previous channel">▼</button>
               </span>
-            </button>
+            </div>
           </div>
         </div>
 
@@ -78,7 +74,7 @@
           </p>
         </div>
 
-        <p class="tuning-hint">Slide the tuner up or down</p>
+        <p class="tuning-hint">Choose a channel with ▲ or ▼</p>
       </section>
 
       <footer>

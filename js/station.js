@@ -1,12 +1,13 @@
 import { loadChannels } from "../engine/catalog.js";
-import { createChannelSlider, createVolumeDial } from "./dial.js";
+import { createChannelButtons, createVolumeDial } from "./dial.js";
 import { RadioEngine } from "./radio.js";
 
 const elements = {
   radio: document.querySelector(".radio"),
   audio: document.querySelector("#radioAudio"),
-  channelSlider: document.querySelector("#channelSlider"),
-  sliderThumb: document.querySelector("#sliderThumb"),
+  channelField: document.querySelector(".channel-field"),
+  channelUp: document.querySelector("#channelUp"),
+  channelDown: document.querySelector("#channelDown"),
   channelName: document.querySelector("#channelName"),
   channelStatus: document.querySelector("#channelStatus"),
   broadcastTime: document.querySelector("#broadcastTime"),
@@ -52,16 +53,14 @@ radio.addEventListener("volumechange", (event) => {
   elements.volumeValue.textContent = String(event.detail);
 });
 
-createChannelSlider(
-  elements.channelSlider,
-  elements.sliderThumb,
+createChannelButtons(
+  elements.channelField,
+  elements.channelUp,
+  elements.channelDown,
   (direction) => {
     if (!radio.channels.length) return;
     activeIndex = (activeIndex + direction + radio.channels.length) % radio.channels.length;
     radio.selectChannel(activeIndex, { startPlayback: true });
-  },
-  () => {
-    if (!radio.isPowered && radio.channels.length) radio.powerOn();
   },
 );
 

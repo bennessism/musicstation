@@ -129,26 +129,21 @@ button {
 
 .channel-field {
   position: relative;
-  min-width: 0;
-  min-height: 88px;
+  width: clamp(176px, 23vw, 224px);
+  min-height: 62px;
   margin-right: clamp(14px, 3vw, 34px);
-  padding: 22px 56px 22px 24px;
+  padding: 0 34px 0 18px;
   overflow: hidden;
   border: 1px solid rgba(216, 201, 169, 0.28);
   background: #17130e;
   box-shadow: inset 0 0 34px rgba(0, 0, 0, 0.32);
-  cursor: ns-resize;
+  display: flex;
+  align-items: center;
   text-align: left;
-  touch-action: none;
-  user-select: none;
-}
-
-.channel-field.is-dragging {
-  border-color: rgba(217, 138, 43, 0.54);
 }
 
 .channel-field.is-locked {
-  cursor: wait;
+  border-color: rgba(217, 138, 43, 0.48);
 }
 
 .channel-field::after {
@@ -185,48 +180,40 @@ button {
   text-shadow: 0 0 22px var(--amber-soft);
 }
 
-.slider-track {
+.channel-arrows {
   position: absolute;
-  top: 12px;
-  right: 17px;
-  bottom: 12px;
-  width: 18px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 31px;
+  display: grid;
+  grid-template-rows: 1fr 1fr;
   border-left: 1px solid rgba(216, 201, 169, 0.26);
 }
 
-.slider-track::before,
-.slider-track::after {
-  position: absolute;
-  left: -3px;
-  width: 5px;
-  height: 1px;
-  content: "";
-  background: var(--paper-dim);
+.channel-arrows button {
+  padding: 0;
+  border: 0;
+  color: var(--paper-dim);
+  background: transparent;
+  cursor: pointer;
+  font-size: 0.48rem;
+  line-height: 1;
 }
 
-.slider-track::before { top: 0; }
-.slider-track::after { bottom: 0; }
-
-.slider-thumb {
-  position: absolute;
-  top: 50%;
-  left: -6px;
-  width: 11px;
-  height: 22px;
-  border: 1px solid var(--paper-dim);
-  background: #292117;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
-  transform: translateY(-50%);
-  transition: transform 240ms cubic-bezier(0.16, 0.84, 0.28, 1);
+.channel-arrows button:first-child {
+  border-bottom: 1px solid rgba(216, 201, 169, 0.18);
 }
 
-.channel-field.is-dragging .slider-thumb {
-  transition: none;
+.channel-arrows button:hover:not(:disabled),
+.channel-arrows button:focus-visible {
+  color: var(--amber);
+  background: rgba(217, 138, 43, 0.06);
 }
 
-.channel-field.is-locked .slider-thumb {
-  border-color: var(--amber);
-  box-shadow: 0 0 10px var(--amber-soft);
+.channel-arrows button:disabled {
+  cursor: wait;
+  opacity: 0.34;
 }
 
 .channel-name.is-changing {
@@ -271,7 +258,7 @@ button {
 }
 
 .volume-dial:focus-visible,
-.channel-field:focus-visible {
+.channel-arrows button:focus-visible {
   outline: 2px solid var(--amber);
   outline-offset: 5px;
 }
@@ -403,7 +390,7 @@ footer {
   }
 
   .channel-field {
-    width: min(330px, 82%);
+    width: min(224px, 72%);
     margin: 0 0 0 auto;
   }
 
