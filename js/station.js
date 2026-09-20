@@ -58,7 +58,7 @@ function renderState({ isPowered, isPlaying, isTuning, track }) {
     : isPowered && track
       ? track.title
       : resumeExpected
-        ? "Tap the station to resume"
+        ? "Tap to resume"
         : "Choose a channel to listen";
   document.title = isPlaying && track ? `${track.title} — BENNESSism` : "BENNESSism | Music Station";
 }
@@ -82,7 +82,7 @@ createChannelButtons(
 
 createVolumeDial(elements.volumeDial, radio.volume, (value) => radio.setVolume(value));
 
-elements.radio.addEventListener(
+document.addEventListener(
   "pointerdown",
   (event) => {
     if (!radio.isPowered && !event.target.closest(".channel-arrows")) {
