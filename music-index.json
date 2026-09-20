@@ -22,6 +22,87 @@
         }
       ]
     },
+    "featured": {
+      "name": "Featured",
+      "description": "Independent continuous radio.",
+      "broadcastMode": "always",
+      "scheduleStart": "",
+      "scheduleEnd": "",
+      "hostName": "",
+      "hostInfo": "",
+      "tracks": [
+        {
+          "filename": "do-you-like-me.mp3",
+          "title": "Do You Like Me",
+          "durationSeconds": 134.424,
+          "sourceSha": "e32ae6682c1143d379bce16ef8e7d6419229bd5d",
+          "order": 0,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
+          "filename": "morning-cat-song.mp3",
+          "title": "Morning Cat Song",
+          "durationSeconds": 162.312,
+          "sourceSha": "468143f4e7631662d70a0afbc675aa9e866ef1c8",
+          "order": 1,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
+          "filename": "that-sign.mp3",
+          "title": "That Sign",
+          "durationSeconds": 179.856,
+          "sourceSha": "a8a58ad4b64a6ea93317753d2adef164ba9dc508",
+          "order": 2,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
+          "filename": "woof-woof-best-狗.mp3",
+          "title": "Woof Woof Best 狗",
+          "durationSeconds": 127.032,
+          "sourceSha": "db3fde7fa1ef78dce9d9b1c1dc2bdf8f4dcdff4e",
+          "order": 3,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
+          "filename": "work-sleep-repeat.mp3",
+          "title": "Work Sleep Repeat",
+          "durationSeconds": 155.76,
+          "sourceSha": "9f03ce10429b861b98c3243cf04cae05bf4c852c",
+          "order": 4,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
+          "filename": "宝贝-new.mp3",
+          "title": "宝贝 New",
+          "durationSeconds": 135.456,
+          "sourceSha": "2d0679c59443fe758a85e2afe6ba346ac4f14129",
+          "order": 5,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
+          "filename": "星光下的我们.mp3",
+          "title": "星光下的我们",
+          "durationSeconds": 150.192,
+          "sourceSha": "9dc61682788dbb430d86fbf7faf1b49c73991aef",
+          "order": 6,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        }
+      ]
+    },
     "gothic": {
       "name": "Gothic",
       "description": "Dark, slow and atmospheric.",
