@@ -20,6 +20,7 @@ const elements = {
 
 const radio = new RadioEngine(elements.audio);
 let activeIndex = 0;
+let resumeExpected = sessionStorage.getItem("bennessism-was-on-air") === "1";
 
 function animateChannelName() {
   elements.channelName.classList.remove("is-changing");
@@ -36,14 +37,29 @@ function renderChannel(channel) {
 }
 
 function renderState({ isPowered, isPlaying, isTuning, track }) {
+  if (isPlaying) {
+    sessionStorage.setItem("bennessism-was-on-air", "1");
+    resumeExpected = false;
+  }
+
   elements.radio.classList.toggle("is-playing", isPlaying);
   elements.radio.classList.toggle("is-tuning", isTuning);
-  elements.channelStatus.textContent = isTuning ? "Tuning" : isPlaying ? "On air" : isPowered ? "Connecting" : "Slide tuner";
+  elements.channelStatus.textContent = isTuning
+    ? "Tuning"
+    : isPlaying
+      ? "On air"
+      : isPowered
+        ? "Connecting"
+        : resumeExpected
+          ? "Paused"
+          : "Choose channel";
   elements.trackTitle.textContent = isTuning
     ? "Changing channel…"
     : isPowered && track
       ? track.title
-      : "Slide the tuner to listen";
+      : resumeExpected
+        ? "Tap the station to resume"
+        : "Choose a channel to listen";
   document.title = isPlaying && track ? `${track.title} — BENNESSism` : "BENNESSism | Music Station";
 }
 
@@ -66,6 +82,16 @@ createChannelButtons(
 
 createVolumeDial(elements.volumeDial, radio.volume, (value) => radio.setVolume(value));
 
+elements.radio.addEventListener(
+  "pointerdown",
+  (event) => {
+    if (!radio.isPowered && !event.target.closest(".channel-arrows")) {
+      radio.powerOn();
+    }
+  },
+  { capture: true },
+);
+
 function updateClock() {
   elements.localTime.textContent = new Intl.DateTimeFormat([], {
     hour: "2-digit",
@@ -80,6 +106,8 @@ async function start() {
   const channels = await loadChannels();
   radio.setChannels(channels);
   activeIndex = radio.channelIndex;
+
+  if (resumeExpected) radio.powerOn();
 
   if ("serviceWorker" in navigator) {
     navigator.serviceWorker.register("./service-worker.js").catch((error) => {
