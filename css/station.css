@@ -129,21 +129,25 @@ button {
 
 .channel-field {
   position: relative;
-  width: clamp(176px, 23vw, 224px);
-  min-height: 62px;
+  width: clamp(164px, 21vw, 208px);
+  min-height: 54px;
   margin-right: clamp(14px, 3vw, 34px);
   padding: 0 34px 0 18px;
   overflow: hidden;
-  border: 1px solid rgba(216, 201, 169, 0.28);
-  background: #17130e;
-  box-shadow: inset 0 0 34px rgba(0, 0, 0, 0.32);
+  border: 1px solid rgba(216, 201, 169, 0.13);
+  background: rgba(216, 201, 169, 0.025);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.025),
+    0 8px 26px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   display: flex;
   align-items: center;
   text-align: left;
 }
 
 .channel-field.is-locked {
-  border-color: rgba(217, 138, 43, 0.48);
+  border-color: rgba(217, 138, 43, 0.24);
 }
 
 .channel-field::after {
@@ -159,7 +163,7 @@ button {
 }
 
 .radio.is-tuning .channel-field::after {
-  opacity: 0.72;
+  opacity: 0.38;
   animation: tuning-scan 650ms ease-in-out;
 }
 
@@ -171,13 +175,17 @@ button {
 .channel-name {
   display: block;
   overflow: hidden;
-  color: var(--amber);
-  font-size: clamp(0.77rem, 1.65vw, 1.15rem);
-  letter-spacing: 0.18em;
+  color: rgba(216, 201, 169, 0.76);
+  font-size: clamp(0.68rem, 1.4vw, 0.9rem);
+  letter-spacing: 0.14em;
   text-overflow: ellipsis;
   text-transform: uppercase;
   white-space: nowrap;
-  text-shadow: 0 0 22px var(--amber-soft);
+  text-shadow: none;
+}
+
+.radio.is-tuning .channel-name {
+  color: rgba(217, 138, 43, 0.78);
 }
 
 .channel-arrows {
@@ -188,13 +196,13 @@ button {
   width: 31px;
   display: grid;
   grid-template-rows: 1fr 1fr;
-  border-left: 1px solid rgba(216, 201, 169, 0.26);
+  border-left: 1px solid rgba(216, 201, 169, 0.11);
 }
 
 .channel-arrows button {
   padding: 0;
   border: 0;
-  color: var(--paper-dim);
+  color: rgba(141, 128, 104, 0.65);
   background: transparent;
   cursor: pointer;
   font-size: 0.48rem;
@@ -202,13 +210,13 @@ button {
 }
 
 .channel-arrows button:first-child {
-  border-bottom: 1px solid rgba(216, 201, 169, 0.18);
+  border-bottom: 1px solid rgba(216, 201, 169, 0.09);
 }
 
 .channel-arrows button:hover:not(:disabled),
 .channel-arrows button:focus-visible {
-  color: var(--amber);
-  background: rgba(217, 138, 43, 0.06);
+  color: var(--paper);
+  background: rgba(216, 201, 169, 0.035);
 }
 
 .channel-arrows button:disabled {
@@ -396,7 +404,7 @@ footer {
   }
 
   .channel-field {
-    width: min(224px, 100%);
+    width: min(208px, 100%);
     margin: 0 auto;
   }
 
