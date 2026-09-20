@@ -19,16 +19,6 @@
           "type": "music",
           "targetUrl": "https://my.shp.ee/pd200hu5?fromSource=copy_link&smtt=0.0.9",
           "linkLabel": "Visit Online Store"
-        },
-        {
-          "filename": "zus-coffee.mp3",
-          "title": "Zus Coffee",
-          "durationSeconds": 18.338,
-          "sourceSha": "c4684b28bf639ba3cf215e8a55dbde77c818c642",
-          "order": 1,
-          "type": "music",
-          "targetUrl": "https://my.shp.ee/796k6s2a?fromSource=copy_link&smtt=0.0.9",
-          "linkLabel": "Visit Online Store"
         }
       ]
     },
