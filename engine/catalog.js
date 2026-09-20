@@ -1,8 +1,6 @@
 const REPOSITORY = "BENNESSism/musicstation";
 const API_ROOT = `https://api.github.com/repos/${REPOSITORY}/contents/music`;
-const FIRESTORE_ROOT =
-  "https://firestore.googleapis.com/v1/projects/bennessism-stn/databases/(default)/documents/channels";
-const FIREBASE_API_KEY = "AIzaSyD61vOfnwsbYKA-3waF_u1dqY1LPIOS6vQ";
+const INDEX_URL = "./music-index.json";
 const AUDIO_PATTERN = /\.(mp3|m4a|aac|ogg|wav|flac)$/i;
 const MINIMUM_AUDIO_BYTES = 1024;
 
@@ -107,76 +105,34 @@ async function loadFromGitHub() {
   return channels.filter((channel) => channel.tracks.length).map(decorateChannel);
 }
 
-function decodeFirestoreValue(value = {}) {
-  if ("stringValue" in value) return value.stringValue;
-  if ("integerValue" in value) return Number(value.integerValue);
-  if ("doubleValue" in value) return value.doubleValue;
-  if ("booleanValue" in value) return value.booleanValue;
-  if ("nullValue" in value) return null;
-  if ("timestampValue" in value) return value.timestampValue;
-  if ("arrayValue" in value) {
-    return (value.arrayValue.values || []).map(decodeFirestoreValue);
-  }
-  if ("mapValue" in value) {
-    return Object.fromEntries(
-      Object.entries(value.mapValue.fields || {}).map(([key, entry]) => [key, decodeFirestoreValue(entry)]),
-    );
-  }
-  return undefined;
+async function loadFromIndex() {
+  const response = await fetch(INDEX_URL, { cache: "no-cache" });
+  if (!response.ok) throw new Error(`Music index returned ${response.status}`);
+
+  const index = await response.json();
+  return Object.entries(index.channels || {})
+    .map(([channelId, items]) => ({
+      id: channelId,
+      tracks: items.map((item) => ({
+        ...trackFromName(channelId, item.filename, null, item.sourceSha || ""),
+        duration: Number(item.durationSeconds) || undefined,
+      })),
+    }))
+    .filter((channel) => channel.tracks.length)
+    .map(decorateChannel);
 }
 
-function decodeFirestoreFields(fields = {}) {
-  return Object.fromEntries(
-    Object.entries(fields).map(([key, value]) => [key, decodeFirestoreValue(value)]),
-  );
-}
-
-async function loadSavedChannel(channel) {
+export async function loadChannels() {
   try {
-    const response = await fetch(
-      `${FIRESTORE_ROOT}/${encodeURIComponent(channel.id)}?key=${FIREBASE_API_KEY}`,
-    );
-    if (response.status === 404) return channel;
-    if (!response.ok) throw new Error(`Firestore returned ${response.status}`);
-
-    const saved = decodeFirestoreFields((await response.json()).fields);
-    const timeline = Array.isArray(saved.timeline) ? saved.timeline : [];
-    const savedTracks = new Map(timeline.map((item) => [item.filename, item]));
-    const tracks = channel.tracks
-      .map((track, fallbackOrder) => {
-        const item = savedTracks.get(track.name);
-        if (!item) return { ...track, order: fallbackOrder };
-        const durationMatchesSource = !track.sourceSha || item.sourceSha === track.sourceSha;
-        return {
-          ...track,
-          title: item.title || track.title,
-          duration: durationMatchesSource ? Number(item.durationSeconds) || undefined : undefined,
-          order: Number.isFinite(item.order) ? item.order : fallbackOrder,
-          type: item.type || "music",
-          targetUrl: item.targetUrl || "",
-          linkLabel: item.linkLabel || "",
-        };
-      })
-      .sort((a, b) => a.order - b.order);
-
-    return {
-      ...channel,
-      name: saved.name || channel.name,
-      description: saved.description || channel.description,
-      tracks,
-    };
+    const channels = await loadFromIndex();
+    if (channels.length) return channels;
   } catch (error) {
-    console.warn(`Using GitHub-only details for ${channel.id}.`, error);
-    return channel;
+    console.warn("The generated music index is not ready; scanning GitHub instead.", error);
   }
-}
 
-export async function loadChannels({ includeSaved = true } = {}) {
   try {
     const channels = await loadFromGitHub();
-    if (channels.length) {
-      return includeSaved ? Promise.all(channels.map(loadSavedChannel)) : channels;
-    }
+    if (channels.length) return channels;
   } catch (error) {
     console.warn("Using the built-in station catalog.", error);
   }

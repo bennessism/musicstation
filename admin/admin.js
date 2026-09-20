@@ -46,7 +46,6 @@ const saveChannel = document.querySelector("#saveChannel");
 let channels = [];
 let editorStarted = false;
 let loadSequence = 0;
-const DURATION_TIMEOUT_MS = 20_000;
 
 function showError(message) {
   authError.textContent = message;
@@ -67,60 +66,6 @@ function currentChannel() {
 
 function updateScheduleVisibility() {
   scheduleFields.hidden = broadcastMode.value !== "scheduled";
-}
-
-function measureTrackDuration(track) {
-  if (Number.isFinite(track.durationSeconds) && track.durationSeconds > 0) {
-    return Promise.resolve(track.durationSeconds);
-  }
-
-  return new Promise((resolve, reject) => {
-    const probe = document.createElement("audio");
-    let settled = false;
-
-    const finish = (error, duration) => {
-      if (settled) return;
-      settled = true;
-      clearTimeout(timeout);
-      probe.removeAttribute("src");
-      probe.load();
-      if (error) reject(error);
-      else resolve(duration);
-    };
-
-    const timeout = setTimeout(
-      () => finish(new Error(`Timed out while reading ${track.name}`)),
-      DURATION_TIMEOUT_MS,
-    );
-    probe.preload = "metadata";
-    probe.addEventListener("loadedmetadata", () => {
-      if (Number.isFinite(probe.duration) && probe.duration > 0) finish(null, probe.duration);
-      else finish(new Error(`Invalid duration for ${track.name}`));
-    }, { once: true });
-    probe.addEventListener(
-      "error",
-      () => finish(new Error(`Could not read duration for ${track.name}`)),
-      { once: true },
-    );
-    probe.src = track.url;
-    probe.load();
-  });
-}
-
-async function mapWithConcurrency(items, limit, worker) {
-  const results = new Array(items.length);
-  let nextIndex = 0;
-
-  async function run() {
-    while (nextIndex < items.length) {
-      const index = nextIndex;
-      nextIndex += 1;
-      results[index] = await worker(items[index], index);
-    }
-  }
-
-  await Promise.all(Array.from({ length: Math.min(limit, items.length) }, run));
-  return results;
 }
 
 function createTrackRow(track, saved = {}) {
@@ -211,20 +156,6 @@ async function loadChannelEditor() {
     const savedChannel = channelSnapshot.exists() ? channelSnapshot.data() : {};
     const savedItems = new Map(itemSnapshot.docs.map((item) => [item.id, item.data()]));
 
-    channel.tracks.forEach((track) => {
-      const saved = savedItems.get(track.name);
-      if (
-        saved &&
-        Number.isFinite(saved.durationSeconds) &&
-        saved.durationSeconds > 0 &&
-        (!track.sourceSha || saved.sourceSha === track.sourceSha)
-      ) {
-        track.durationSeconds = saved.durationSeconds;
-      } else {
-        delete track.durationSeconds;
-      }
-    });
-
     broadcastMode.value = savedChannel.broadcastMode || "always";
     channelDisplayName.value = savedChannel.name || channel.name;
     scheduleStart.value = savedChannel.scheduleStart || "23:00";
@@ -257,7 +188,7 @@ async function scanChannels({ keepSelection = true } = {}) {
   setFormMessage("Scanning GitHub music folders…");
 
   try {
-    channels = await loadChannels({ includeSaved: false });
+    channels = await loadChannels();
     channelSelect.replaceChildren(
       ...channels.map((channel) => {
         const option = document.createElement("option");
@@ -301,42 +232,11 @@ async function saveChannelSettings(event) {
   try {
     const channelRef = doc(db, "channels", channel.id);
     const existingItems = await getDocs(collection(channelRef, "items"));
-    const savedItems = new Map(existingItems.docs.map((item) => [item.id, item.data()]));
     const currentNames = new Set(channel.tracks.map((track) => track.name));
-    setFormMessage("Checking audio durations…");
-    const durations = await mapWithConcurrency(channel.tracks, 4, async (track) => {
-      const saved = savedItems.get(track.name);
-      const canReuse =
-        saved &&
-        Number.isFinite(saved.durationSeconds) &&
-        saved.durationSeconds > 0 &&
-        (!track.sourceSha || saved.sourceSha === track.sourceSha);
-      const durationSeconds = canReuse
-        ? saved.durationSeconds
-        : await measureTrackDuration(track);
-      track.durationSeconds = durationSeconds;
-      return durationSeconds;
-    });
-
     const batch = writeBatch(db);
     existingItems.docs
       .filter((item) => !currentNames.has(item.id))
       .forEach((item) => batch.delete(item.ref));
-    const timeline = itemRows.map((row, order) => {
-      const track = channel.tracks.find((entry) => entry.name === row.dataset.filename);
-      return {
-        filename: track.name,
-        title: track.title,
-        audioUrl: track.url,
-        sourceSha: track.sourceSha || "",
-        durationSeconds: durations[channel.tracks.indexOf(track)],
-        order,
-        type: row.querySelector('[data-field="type"]').value,
-        targetUrl: row.querySelector('[data-field="targetUrl"]').value.trim(),
-        linkLabel: row.querySelector('[data-field="linkLabel"]').value.trim(),
-      };
-    });
-
     batch.set(channelRef, {
       id: channel.id,
       name: channelDisplayName.value.trim(),
@@ -347,7 +247,6 @@ async function saveChannelSettings(event) {
       hostName: hostName.value.trim(),
       hostInfo: hostInfo.value.trim(),
       trackCount: channel.tracks.length,
-      timeline,
       updatedAt: serverTimestamp(),
     });
 
@@ -357,8 +256,6 @@ async function saveChannelSettings(event) {
         filename: track.name,
         title: track.title,
         audioUrl: track.url,
-        sourceSha: track.sourceSha || "",
-        durationSeconds: durations[channel.tracks.indexOf(track)],
         order,
         type: row.querySelector('[data-field="type"]').value,
         targetUrl: row.querySelector('[data-field="targetUrl"]').value.trim(),
@@ -371,10 +268,7 @@ async function saveChannelSettings(event) {
     setFormMessage("Channel saved.", "success");
   } catch (error) {
     console.error(error);
-    const message = /duration|reading|timed out/i.test(error.message || "")
-      ? error.message
-      : "Could not save. Check that the Firestore rules were published.";
-    setFormMessage(message, "error");
+    setFormMessage("Could not save. Check that the Firestore rules were published.", "error");
   } finally {
     saveChannel.disabled = false;
   }

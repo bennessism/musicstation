@@ -1,0 +1,43 @@
+name: Build music index
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "music/**"
+      - "scripts/build-music-index.mjs"
+      - ".github/workflows/music-index.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: music-index-main
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Ensure ffprobe is available
+        run: command -v ffprobe || (sudo apt-get update && sudo apt-get install -y ffmpeg)
+
+      - name: Build music index
+        run: node scripts/build-music-index.mjs
+
+      - name: Commit updated index
+        run: |
+          if git diff --quiet -- music-index.json; then
+            echo "Music index is already current."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add music-index.json
+          git commit -m "Update generated music index"
+          git push
