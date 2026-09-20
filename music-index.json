@@ -32,6 +32,16 @@
       "hostInfo": "",
       "tracks": [
         {
+          "filename": "cathedral-of-bitter-rain.mp3",
+          "title": "Cathedral Of Bitter Rain",
+          "durationSeconds": 175.647,
+          "sourceSha": "508a24d2867966fd6796c04d8a1f89a755d3f120",
+          "order": 0,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
           "filename": "cold-stone-altars.mp3",
           "title": "Cold Stone Altars",
           "durationSeconds": 174.211,
