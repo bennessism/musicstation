@@ -43,21 +43,24 @@
             <output class="volume-value" id="volumeValue">65</output>
           </section>
 
-          <div class="tuner-wrap" id="tunerWrap">
-            <div class="tuner-ring" id="tunerRing" aria-hidden="true"></div>
-
+          <div class="station-console">
             <div class="station-mark" aria-hidden="true">
               <span class="brand">BENNESSism</span>
               <span class="subtitle">music station</span>
             </div>
 
             <button
-              class="channel-window"
-              id="channelWindow"
+              class="channel-field"
+              id="channelSlider"
               type="button"
-              aria-label="Turn channel dial"
+              aria-label="Channel tuner. Slide up or down."
+              aria-orientation="vertical"
+              role="slider"
             >
               <span class="channel-name" id="channelName">Tuning</span>
+              <span class="slider-track" aria-hidden="true">
+                <span class="slider-thumb" id="sliderThumb"></span>
+              </span>
             </button>
           </div>
         </div>
@@ -75,7 +78,7 @@
           </p>
         </div>
 
-        <p class="tuning-hint">Turn the large dial to tune</p>
+        <p class="tuning-hint">Slide the tuner up or down</p>
       </section>
 
       <footer>

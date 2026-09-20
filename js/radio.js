@@ -1,4 +1,5 @@
 const DEFAULT_TRACK_SECONDS = 240;
+const TUNING_DELAY_MS = 650;
 
 function getStoredVolume() {
   const stored = Number.parseInt(localStorage.getItem("bennessism-volume") || "65", 10);
@@ -13,6 +14,8 @@ export class RadioEngine extends EventTarget {
     this.channelIndex = 0;
     this.trackIndex = 0;
     this.isPowered = false;
+    this.isTuning = false;
+    this.tuningSequence = 0;
     this.volume = getStoredVolume();
     this.audio.volume = this.volume / 100;
 
@@ -65,14 +68,31 @@ export class RadioEngine extends EventTarget {
     else await this.powerOn();
   }
 
-  async selectChannel(index) {
+  async selectChannel(index, { startPlayback = false } = {}) {
     if (!this.channels.length) return;
+    const shouldPlay = this.isPowered || startPlayback;
+    const sequence = ++this.tuningSequence;
+    this.isPowered = shouldPlay;
+
+    if (shouldPlay) {
+      this.isTuning = true;
+      this.audio.pause();
+      this.audio.currentTime = 0;
+      this.audio.removeAttribute("src");
+      delete this.audio.dataset.trackId;
+      this.audio.load();
+    }
+
     this.channelIndex = (index + this.channels.length) % this.channels.length;
     this.trackIndex = this.stationTrackIndex();
     localStorage.setItem("bennessism-channel", this.channel.id);
     this.emitChannel();
 
-    if (this.isPowered) await this.tune({ synchronize: true });
+    if (shouldPlay) {
+      await new Promise((resolve) => setTimeout(resolve, TUNING_DELAY_MS));
+      if (sequence !== this.tuningSequence) return;
+      await this.tune({ synchronize: true });
+    }
   }
 
   async tune({ synchronize = false } = {}) {
@@ -99,8 +119,11 @@ export class RadioEngine extends EventTarget {
 
     try {
       await this.audio.play();
+      this.isTuning = false;
+      this.emitState();
     } catch (error) {
       this.isPowered = false;
+      this.isTuning = false;
       this.emitState();
       console.warn("Playback needs a user gesture.", error);
     }
@@ -136,6 +159,7 @@ export class RadioEngine extends EventTarget {
         detail: {
           isPowered: this.isPowered,
           isPlaying: !this.audio.paused,
+          isTuning: this.isTuning,
           channel: this.channel,
           track: this.track,
         },

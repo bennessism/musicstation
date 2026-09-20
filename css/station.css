@@ -75,54 +75,37 @@ button {
   justify-content: center;
 }
 
-.tuner-wrap {
+.station-console {
   position: relative;
-  width: min(78vw, 790px);
-  aspect-ratio: 2.08 / 1;
-  touch-action: none;
-  user-select: none;
-  cursor: grab;
+  width: min(76vw, 760px);
+  min-height: clamp(190px, 28vw, 270px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(180px, 0.75fr);
+  align-items: center;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background:
+    linear-gradient(90deg, rgba(216, 201, 169, 0.025), transparent 45%),
+    rgba(23, 19, 14, 0.2);
 }
 
-.tuner-wrap.is-dragging {
-  cursor: grabbing;
-}
-
-.tuner-ring {
+.station-console::before,
+.station-console::after {
   position: absolute;
-  inset: 0;
-  border: clamp(4px, 0.55vw, 7px) solid rgba(216, 201, 169, 0.64);
-  border-radius: 50%;
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.8),
-    0 0 0 10px rgba(216, 201, 169, 0.035),
-    inset 0 0 44px rgba(216, 201, 169, 0.045),
-    0 0 38px rgba(216, 201, 169, 0.05);
-  transition: transform 700ms cubic-bezier(0.16, 0.84, 0.28, 1);
-  will-change: transform;
-}
-
-.tuner-ring::before {
-  position: absolute;
-  inset: -17px;
-  border-radius: 50%;
+  left: 0;
+  width: 22px;
+  height: 1px;
   content: "";
-  background: repeating-conic-gradient(
-    from -1deg,
-    rgba(216, 201, 169, 0.68) 0 1deg,
-    transparent 1deg 10deg
-  );
-  mask: radial-gradient(ellipse at center, transparent 0 69%, #000 69.5% 72%, transparent 72.5%);
-  -webkit-mask: radial-gradient(ellipse at center, transparent 0 69%, #000 69.5% 72%, transparent 72.5%);
+  background: var(--paper-dim);
 }
+
+.station-console::before { top: -1px; }
+.station-console::after { bottom: -1px; }
 
 .station-mark {
-  position: absolute;
-  top: 50%;
-  left: 50%;
   display: flex;
   flex-direction: column;
-  transform: translate(-53%, -50%);
+  padding: 0 clamp(28px, 6vw, 72px);
   pointer-events: none;
 }
 
@@ -144,17 +127,50 @@ button {
   text-transform: lowercase;
 }
 
-.channel-window {
-  position: absolute;
-  top: 50%;
-  right: 0;
-  min-width: clamp(124px, 21vw, 232px);
-  padding: 15px 10px 15px 24px;
-  border: 0;
-  background: linear-gradient(90deg, transparent, var(--ink) 17%);
-  transform: translate(54%, -50%);
-  cursor: grab;
+.channel-field {
+  position: relative;
+  min-width: 0;
+  min-height: 88px;
+  margin-right: clamp(14px, 3vw, 34px);
+  padding: 22px 56px 22px 24px;
+  overflow: hidden;
+  border: 1px solid rgba(216, 201, 169, 0.28);
+  background: #17130e;
+  box-shadow: inset 0 0 34px rgba(0, 0, 0, 0.32);
+  cursor: ns-resize;
   text-align: left;
+  touch-action: none;
+  user-select: none;
+}
+
+.channel-field.is-dragging {
+  border-color: rgba(217, 138, 43, 0.54);
+}
+
+.channel-field.is-locked {
+  cursor: wait;
+}
+
+.channel-field::after {
+  position: absolute;
+  right: 46px;
+  bottom: 0;
+  left: 0;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, var(--amber), transparent);
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.radio.is-tuning .channel-field::after {
+  opacity: 0.72;
+  animation: tuning-scan 650ms ease-in-out;
+}
+
+@keyframes tuning-scan {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
 }
 
 .channel-name {
@@ -167,6 +183,50 @@ button {
   text-transform: uppercase;
   white-space: nowrap;
   text-shadow: 0 0 22px var(--amber-soft);
+}
+
+.slider-track {
+  position: absolute;
+  top: 12px;
+  right: 17px;
+  bottom: 12px;
+  width: 18px;
+  border-left: 1px solid rgba(216, 201, 169, 0.26);
+}
+
+.slider-track::before,
+.slider-track::after {
+  position: absolute;
+  left: -3px;
+  width: 5px;
+  height: 1px;
+  content: "";
+  background: var(--paper-dim);
+}
+
+.slider-track::before { top: 0; }
+.slider-track::after { bottom: 0; }
+
+.slider-thumb {
+  position: absolute;
+  top: 50%;
+  left: -6px;
+  width: 11px;
+  height: 22px;
+  border: 1px solid var(--paper-dim);
+  background: #292117;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+  transform: translateY(-50%);
+  transition: transform 240ms cubic-bezier(0.16, 0.84, 0.28, 1);
+}
+
+.channel-field.is-dragging .slider-thumb {
+  transition: none;
+}
+
+.channel-field.is-locked .slider-thumb {
+  border-color: var(--amber);
+  box-shadow: 0 0 10px var(--amber-soft);
 }
 
 .channel-name.is-changing {
@@ -211,7 +271,7 @@ button {
 }
 
 .volume-dial:focus-visible,
-.channel-window:focus-visible {
+.channel-field:focus-visible {
   outline: 2px solid var(--amber);
   outline-offset: 5px;
 }
@@ -261,6 +321,16 @@ button {
   border-color: var(--amber);
   background: var(--amber);
   box-shadow: 0 0 12px var(--amber);
+}
+
+.radio.is-tuning .signal-lamp {
+  border-color: var(--amber);
+  animation: tuning-lamp 420ms ease-in-out infinite alternate;
+}
+
+@keyframes tuning-lamp {
+  from { background: transparent; box-shadow: none; }
+  to { background: var(--amber); box-shadow: 0 0 10px var(--amber-soft); }
 }
 
 .status-separator {
@@ -313,25 +383,28 @@ footer {
   }
 
   .radio-stage {
-    padding-left: 10px;
+    padding-left: 0;
   }
 
-  .tuner-wrap {
-    width: min(86vw, 610px);
-  }
-
-  .station-mark {
-    transform: translate(-56%, -50%);
+  .station-console {
+    width: min(89vw, 610px);
+    grid-template-columns: 1fr;
+    gap: 30px;
+    padding: 42px 24px 34px;
   }
 
   .volume-control {
-    left: -2px;
-    transform: translateY(78%);
+    left: 8px;
+    transform: translate(-6%, 110%);
   }
 
-  .channel-window {
-    min-width: 126px;
-    transform: translate(42%, -50%);
+  .station-mark {
+    padding: 0 28px;
+  }
+
+  .channel-field {
+    width: min(330px, 82%);
+    margin: 0 0 0 auto;
   }
 
   .radio-readout {
@@ -349,10 +422,6 @@ footer {
     margin-bottom: 19vh;
   }
 
-  .tuner-wrap {
-    width: 91vw;
-  }
-
   .brand {
     font-size: clamp(1.75rem, 9vw, 2.65rem);
   }
@@ -361,20 +430,13 @@ footer {
     font-size: 0.54rem;
   }
 
-  .channel-window {
-    right: 5px;
-    min-width: 108px;
-    padding-left: 18px;
-    transform: translate(25%, -50%);
-  }
-
   .channel-name {
     font-size: 0.68rem;
   }
 
   .volume-control {
     left: 2px;
-    transform: translateY(86%);
+    transform: translate(-4%, 128%);
   }
 
   .volume-dial {

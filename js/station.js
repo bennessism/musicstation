@@ -1,13 +1,12 @@
 import { loadChannels } from "../engine/catalog.js";
-import { createTuningDial, createVolumeDial } from "./dial.js";
+import { createChannelSlider, createVolumeDial } from "./dial.js";
 import { RadioEngine } from "./radio.js";
 
 const elements = {
   radio: document.querySelector(".radio"),
   audio: document.querySelector("#radioAudio"),
-  tuner: document.querySelector("#tunerWrap"),
-  ring: document.querySelector("#tunerRing"),
-  channelWindow: document.querySelector("#channelWindow"),
+  channelSlider: document.querySelector("#channelSlider"),
+  sliderThumb: document.querySelector("#sliderThumb"),
   channelName: document.querySelector("#channelName"),
   channelStatus: document.querySelector("#channelStatus"),
   broadcastTime: document.querySelector("#broadcastTime"),
@@ -35,10 +34,15 @@ function renderChannel(channel) {
   animateChannelName();
 }
 
-function renderState({ isPowered, isPlaying, track }) {
+function renderState({ isPowered, isPlaying, isTuning, track }) {
   elements.radio.classList.toggle("is-playing", isPlaying);
-  elements.channelStatus.textContent = isPlaying ? "On air" : isPowered ? "Tuning" : "Turn dial";
-  elements.trackTitle.textContent = isPowered && track ? track.title : "Turn the dial to listen";
+  elements.radio.classList.toggle("is-tuning", isTuning);
+  elements.channelStatus.textContent = isTuning ? "Tuning" : isPlaying ? "On air" : isPowered ? "Connecting" : "Slide tuner";
+  elements.trackTitle.textContent = isTuning
+    ? "Changing channel…"
+    : isPowered && track
+      ? track.title
+      : "Slide the tuner to listen";
   document.title = isPlaying && track ? `${track.title} — BENNESSism` : "BENNESSism | Music Station";
 }
 
@@ -48,13 +52,13 @@ radio.addEventListener("volumechange", (event) => {
   elements.volumeValue.textContent = String(event.detail);
 });
 
-createTuningDial(
-  elements.tuner,
-  elements.ring,
+createChannelSlider(
+  elements.channelSlider,
+  elements.sliderThumb,
   (direction) => {
     if (!radio.channels.length) return;
     activeIndex = (activeIndex + direction + radio.channels.length) % radio.channels.length;
-    radio.selectChannel(activeIndex);
+    radio.selectChannel(activeIndex, { startPlayback: true });
   },
   () => {
     if (!radio.isPowered && radio.channels.length) radio.powerOn();
@@ -62,14 +66,6 @@ createTuningDial(
 );
 
 createVolumeDial(elements.volumeDial, radio.volume, (value) => radio.setVolume(value));
-
-elements.channelWindow.addEventListener("click", (event) => {
-  if (event.detail === 0 && radio.channels.length) {
-    if (!radio.isPowered) radio.powerOn();
-    activeIndex = (activeIndex + 1) % radio.channels.length;
-    radio.selectChannel(activeIndex);
-  }
-});
 
 function updateClock() {
   elements.localTime.textContent = new Intl.DateTimeFormat([], {

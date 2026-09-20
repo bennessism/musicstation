@@ -1,86 +1,54 @@
-function normalizedAngle(x, y, centerX, centerY) {
-  return Math.atan2(y - centerY, x - centerX) * (180 / Math.PI);
-}
-
-function shortestAngleDelta(current, previous) {
-  let delta = current - previous;
-  if (delta > 180) delta -= 360;
-  if (delta < -180) delta += 360;
-  return delta;
-}
-
-export function createTuningDial(element, ring, onStep, onActivate) {
+export function createChannelSlider(element, thumb, onStep, onActivate) {
   let pointerId = null;
-  let lastAngle = 0;
-  let accumulated = 0;
-  let visualRotation = 0;
-  const stepAngle = 34;
+  let startY = 0;
+  let offset = 0;
+  let lockedUntil = 0;
+  const threshold = 20;
+  const travel = 25;
 
-  function setRotation(rotation, immediate = false) {
-    if (immediate) ring.style.transition = "none";
-    ring.style.transform = `rotate(${rotation}deg)`;
-    if (immediate) requestAnimationFrame(() => ring.style.removeProperty("transition"));
+  function setThumb(value) {
+    thumb.style.transform = `translateY(calc(-50% + ${value}px))`;
+  }
+
+  function changeChannel(direction) {
+    if (Date.now() < lockedUntil) return;
+    lockedUntil = Date.now() + 850;
+    element.classList.add("is-locked");
+    onStep(direction);
+    setTimeout(() => element.classList.remove("is-locked"), 850);
   }
 
   element.addEventListener("pointerdown", (event) => {
-    onActivate?.();
-    const bounds = element.getBoundingClientRect();
     pointerId = event.pointerId;
-    lastAngle = normalizedAngle(event.clientX, event.clientY, bounds.left + bounds.width / 2, bounds.top + bounds.height / 2);
-    accumulated = 0;
+    startY = event.clientY;
+    offset = 0;
     element.setPointerCapture(pointerId);
     element.classList.add("is-dragging");
   });
 
   element.addEventListener("pointermove", (event) => {
     if (event.pointerId !== pointerId) return;
-    const bounds = element.getBoundingClientRect();
-    const angle = normalizedAngle(event.clientX, event.clientY, bounds.left + bounds.width / 2, bounds.top + bounds.height / 2);
-    const delta = shortestAngleDelta(angle, lastAngle);
-    lastAngle = angle;
-    accumulated += delta;
-    visualRotation += delta;
-    setRotation(visualRotation, true);
-
-    while (Math.abs(accumulated) >= stepAngle) {
-      const direction = accumulated > 0 ? 1 : -1;
-      onStep(direction);
-      accumulated -= direction * stepAngle;
-    }
+    offset = Math.max(-travel, Math.min(travel, event.clientY - startY));
+    setThumb(offset);
   });
 
   function release(event) {
     if (event.pointerId !== pointerId) return;
     element.classList.remove("is-dragging");
     pointerId = null;
-    visualRotation = Math.round(visualRotation / stepAngle) * stepAngle;
-    setRotation(visualRotation);
+    if (Math.abs(offset) >= threshold) changeChannel(offset < 0 ? 1 : -1);
+    else onActivate?.();
+    offset = 0;
+    setThumb(0);
   }
 
   element.addEventListener("pointerup", release);
   element.addEventListener("pointercancel", release);
 
-  element.addEventListener(
-    "wheel",
-    (event) => {
-      event.preventDefault();
-      onActivate?.();
-      const direction = event.deltaY > 0 || event.deltaX > 0 ? 1 : -1;
-      visualRotation += direction * stepAngle;
-      setRotation(visualRotation);
-      onStep(direction);
-    },
-    { passive: false },
-  );
-
   element.addEventListener("keydown", (event) => {
-    if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(event.key)) return;
+    if (event.repeat || !["ArrowUp", "ArrowDown"].includes(event.key)) return;
     event.preventDefault();
-    onActivate?.();
-    const direction = event.key === "ArrowRight" || event.key === "ArrowDown" ? 1 : -1;
-    visualRotation += direction * stepAngle;
-    setRotation(visualRotation);
-    onStep(direction);
+    changeChannel(event.key === "ArrowUp" ? 1 : -1);
   });
 }
 
