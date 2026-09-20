@@ -80,6 +80,16 @@
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
+        },
+        {
+          "filename": "twilight-at-the-iron-gate.mp3",
+          "title": "Twilight At The Iron Gate",
+          "durationSeconds": 156.212,
+          "sourceSha": "2700a8fbab4c0c24b89935c60e84fa56d413ec0d",
+          "order": 5,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
         }
       ]
     },
