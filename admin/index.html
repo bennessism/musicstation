@@ -40,22 +40,85 @@
       <section class="auth-card identity-card" id="identityPanel" hidden>
         <p class="eyebrow">Authorized</p>
         <h1>Station administration</h1>
-        <p class="intro">
-          This Google account is approved to manage the station.
-        </p>
+        <p class="intro">Choose a detected channel, update its details, then save.</p>
 
-        <div class="identity-row">
-          <span>Google account</span>
-          <strong id="userEmail">—</strong>
-        </div>
-        <div class="uid-block">
-          <span>Firebase UID</span>
-          <code id="userUid">—</code>
-          <button id="copyUid" type="button">Copy UID</button>
+        <div class="account-bar">
+          <span>Signed in as <strong id="userEmail">—</strong></span>
+          <button class="text-button" id="signOut" type="button">Sign out</button>
         </div>
 
-        <p class="locked-note">Channel controls will appear here in the next admin update.</p>
-        <button class="text-button" id="signOut" type="button">Sign out</button>
+        <code id="userUid" hidden>—</code>
+        <button id="copyUid" type="button" hidden>Copy UID</button>
+
+        <form class="channel-form" id="channelForm" hidden>
+          <div class="channel-picker">
+            <label class="field field-grow">
+              <span>Channel</span>
+              <select id="channelSelect" required></select>
+            </label>
+            <button class="secondary-button" id="refreshChannels" type="button">Rescan GitHub</button>
+          </div>
+
+          <p class="form-message" id="formMessage" role="status" aria-live="polite"></p>
+
+          <div class="form-grid">
+            <label class="field">
+              <span>Broadcast status</span>
+              <select id="broadcastMode">
+                <option value="always">On air · 24/7</option>
+                <option value="scheduled">On air · Scheduled</option>
+                <option value="off">Off air</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Display name</span>
+              <input id="channelDisplayName" maxlength="80" required />
+            </label>
+
+            <div class="schedule-fields" id="scheduleFields" hidden>
+              <label class="field">
+                <span>Starts</span>
+                <input id="scheduleStart" type="time" value="23:00" />
+              </label>
+              <label class="field">
+                <span>Ends</span>
+                <input id="scheduleEnd" type="time" value="03:00" />
+              </label>
+            </div>
+
+            <label class="field field-wide">
+              <span>Description</span>
+              <textarea id="channelDescriptionInput" maxlength="240" rows="3"></textarea>
+            </label>
+
+            <label class="field">
+              <span>Host name <small>optional</small></span>
+              <input id="hostName" maxlength="80" />
+            </label>
+
+            <label class="field">
+              <span>Host information <small>optional</small></span>
+              <input id="hostInfo" maxlength="160" />
+            </label>
+          </div>
+
+          <section class="track-editor" aria-labelledby="trackEditorTitle">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">Detected automatically</p>
+                <h2 id="trackEditorTitle">Channel contents</h2>
+              </div>
+              <span id="trackCount">0 items</span>
+            </div>
+            <div class="track-list" id="trackList"></div>
+          </section>
+
+          <div class="save-bar">
+            <button class="save-button" id="saveChannel" type="submit">Save channel</button>
+            <span>Audio files stay on GitHub. Only settings are stored in Firebase.</span>
+          </div>
+        </form>
       </section>
     </main>
 

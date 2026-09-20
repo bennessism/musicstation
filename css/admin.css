@@ -24,7 +24,7 @@ body {
 button { font: inherit; }
 
 .admin-shell {
-  width: min(100% - 32px, 720px);
+  width: min(100% - 32px, 1040px);
   min-height: 100vh;
   margin: 0 auto;
   padding: 34px 0 70px;
@@ -47,6 +47,8 @@ button { font: inherit; }
   background: rgba(23, 19, 14, 0.72);
   box-shadow: 0 22px 80px rgba(0, 0, 0, 0.25);
 }
+
+.identity-card { margin-top: clamp(40px, 8vh, 80px); }
 
 .eyebrow {
   margin: 0 0 18px;
@@ -159,10 +161,158 @@ h1 {
   text-transform: uppercase;
 }
 
+.account-bar,
+.channel-picker,
+.save-bar,
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.account-bar {
+  padding: 14px 0;
+  border-block: 1px solid var(--line);
+  color: var(--paper-dim);
+  font-size: 0.64rem;
+}
+
+.account-bar strong { color: var(--paper-bright); font-weight: 400; }
+
+.channel-form { margin-top: 30px; }
+.channel-form.is-loading { opacity: 0.72; }
+.field-grow { flex: 1; }
+
+.field { display: block; min-width: 0; }
+.field > span {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--paper-dim);
+  font-size: 0.56rem;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.field small { color: #6f6554; font-size: inherit; }
+
+input,
+select,
+textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 0;
+  color: var(--paper-bright);
+  background: #211b14;
+  font: 0.7rem/1.5 "DM Mono", ui-monospace, monospace;
+  outline: none;
+}
+
+input,
+select { min-height: 44px; padding: 0 12px; }
+textarea { resize: vertical; padding: 11px 12px; }
+input:focus,
+select:focus,
+textarea:focus { border-color: var(--amber); }
+
+.secondary-button,
+.save-button {
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid var(--line);
+  color: var(--paper-bright);
+  background: #241e16;
+  cursor: pointer;
+  font: 0.62rem "DM Mono", ui-monospace, monospace;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.save-button { border-color: rgba(217, 138, 43, 0.65); background: #332515; }
+.secondary-button:disabled,
+.save-button:disabled { cursor: wait; opacity: 0.5; }
+
+.form-message {
+  min-height: 1.5em;
+  margin: 16px 0;
+  color: var(--paper-dim);
+  font-size: 0.62rem;
+}
+.form-message[data-tone="error"] { color: #d9947b; }
+.form-message[data-tone="success"] { color: #b9c98f; }
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.field-wide { grid-column: 1 / -1; }
+.schedule-fields {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.track-editor {
+  margin-top: 38px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+}
+
+.section-heading .eyebrow { margin-bottom: 8px; }
+.section-heading h2 {
+  margin: 0;
+  color: var(--paper-bright);
+  font-family: "Libre Caslon Display", Georgia, serif;
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  font-weight: 400;
+}
+.section-heading > span { color: var(--paper-dim); font-size: 0.62rem; }
+
+.track-list { margin-top: 20px; }
+.track-row {
+  display: grid;
+  grid-template-columns: minmax(170px, 1.2fr) minmax(120px, 0.55fr) minmax(180px, 1fr) minmax(150px, 0.8fr);
+  gap: 14px;
+  align-items: end;
+  padding: 17px 0;
+  border-top: 1px solid rgba(216, 201, 169, 0.13);
+}
+
+.track-heading { align-self: center; min-width: 0; }
+.track-heading strong,
+.track-heading span { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.track-heading strong { color: var(--paper-bright); font-size: 0.7rem; font-weight: 400; }
+.track-heading span { margin-top: 5px; color: var(--paper-dim); font-size: 0.55rem; }
+
+.save-bar {
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+}
+.save-bar span { max-width: 470px; color: var(--paper-dim); font-size: 0.57rem; line-height: 1.6; }
+
 [hidden] { display: none !important; }
 
 @media (max-width: 520px) {
   .admin-shell { width: min(100% - 20px, 720px); padding-top: 24px; }
   .auth-card { margin-top: 58px; }
   .google-button { width: 100%; }
+  .auth-card { padding-inline: 20px; }
+  .channel-picker,
+  .save-bar { align-items: stretch; flex-direction: column; }
+  .secondary-button,
+  .save-button { width: 100%; }
+  .form-grid,
+  .schedule-fields { grid-template-columns: 1fr; }
+  .track-row { grid-template-columns: 1fr; gap: 12px; }
+  .track-heading { padding-bottom: 2px; }
+  .save-bar span { text-align: center; }
+}
+
+@media (min-width: 521px) and (max-width: 850px) {
+  .track-row { grid-template-columns: 1fr 1fr; }
+  .track-heading { grid-column: 1 / -1; }
 }
