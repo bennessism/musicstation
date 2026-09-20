@@ -14,11 +14,6 @@ import {
 import { loadChannels } from "../engine/catalog.js";
 import { auth, db, googleProvider } from "../engine/firebase.js";
 
-const ADMIN_UIDS = new Set([
-  "1t7mv9yXmJYYjpBFn2ar1BgUiVX2",
-  "8G9oQmdk8fUhUYIZMjZ9OtLPZnt2",
-]);
-
 const loginPanel = document.querySelector("#loginPanel");
 const identityPanel = document.querySelector("#identityPanel");
 const googleLogin = document.querySelector("#googleLogin");
@@ -44,13 +39,28 @@ const saveChannel = document.querySelector("#saveChannel");
 let channels = [];
 let editorStarted = false;
 let loadSequence = 0;
+let authorizedSession = false;
 
 function showError(message) {
   authError.textContent = message;
 }
 
-function isAdmin(user) {
-  return Boolean(user && ADMIN_UIDS.has(user.uid));
+async function isAdmin(user) {
+  if (!user?.uid || !user?.email) return false;
+
+  try {
+    const snapshot = await getDoc(doc(db, "users", user.uid));
+    if (!snapshot.exists()) return false;
+
+    const profile = snapshot.data();
+    return profile.active === true
+      && profile.role === "admin"
+      && typeof profile.email === "string"
+      && profile.email.trim().toLowerCase() === user.email.trim().toLowerCase();
+  } catch (error) {
+    console.error("Authorization check failed:", error);
+    return false;
+  }
 }
 
 function setFormMessage(message, tone = "") {
@@ -211,7 +221,7 @@ async function scanChannels({ keepSelection = true } = {}) {
 async function saveChannelSettings(event) {
   event.preventDefault();
   const channel = currentChannel();
-  if (!channel || !auth.currentUser || !isAdmin(auth.currentUser)) return;
+  if (!channel || !auth.currentUser || !authorizedSession) return;
 
   const itemRows = [...trackList.querySelectorAll(".track-row")];
   const invalidUrl = itemRows
@@ -279,8 +289,11 @@ async function initializeEditor() {
 }
 
 async function rejectUnauthorizedUser() {
+  authorizedSession = false;
+  editorStarted = false;
   loginPanel.hidden = false;
   identityPanel.hidden = true;
+  channelForm.hidden = true;
   await signOut(auth);
   showError("This Google account is not authorized.");
 }
@@ -290,8 +303,7 @@ googleLogin.addEventListener("click", async () => {
   showError("");
 
   try {
-    const result = await signInWithPopup(auth, googleProvider);
-    if (!isAdmin(result.user)) await rejectUnauthorizedUser();
+    await signInWithPopup(auth, googleProvider);
   } catch (error) {
     if (error.code !== "auth/popup-closed-by-user") {
       showError(
@@ -309,20 +321,27 @@ googleLogin.addEventListener("click", async () => {
 signOutButton.addEventListener("click", () => signOut(auth));
 
 onAuthStateChanged(auth, async (user) => {
-  if (user && !isAdmin(user)) {
+  authorizedSession = false;
+
+  if (!user) {
+    loginPanel.hidden = false;
+    identityPanel.hidden = true;
+    channelForm.hidden = true;
+    userEmail.textContent = "—";
+    return;
+  }
+
+  const approved = await isAdmin(user);
+  if (!approved) {
     await rejectUnauthorizedUser();
     return;
   }
 
-  loginPanel.hidden = isAdmin(user);
-  identityPanel.hidden = !isAdmin(user);
-
-  if (isAdmin(user)) {
-    userEmail.textContent = user.email || "Google account";
-    await initializeEditor();
-  } else {
-    userEmail.textContent = "—";
-  }
+  authorizedSession = true;
+  loginPanel.hidden = true;
+  identityPanel.hidden = false;
+  userEmail.textContent = user.email || "Google account";
+  await initializeEditor();
 });
 
 channelSelect.addEventListener("change", loadChannelEditor);
