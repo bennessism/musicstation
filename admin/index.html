@@ -23,8 +23,7 @@
         <p class="eyebrow">BENNESSism transmission</p>
         <h1>Station administration</h1>
         <p class="intro">
-          Sign in with the Google account that will own this station. The first step only creates
-          your Firebase identity; channel editing remains locked.
+          Continue with one of the two approved Google accounts. All other accounts are denied.
         </p>
         <button class="google-button" id="googleLogin" type="button">
           <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -39,10 +38,10 @@
       </section>
 
       <section class="auth-card identity-card" id="identityPanel" hidden>
-        <p class="eyebrow">Identity created</p>
-        <h1>First login complete</h1>
+        <p class="eyebrow">Authorized</p>
+        <h1>Station administration</h1>
         <p class="intro">
-          Copy this UID. It will become the only identity allowed to administer the station.
+          This Google account is approved to manage the station.
         </p>
 
         <div class="identity-row">
@@ -55,7 +54,7 @@
           <button id="copyUid" type="button">Copy UID</button>
         </div>
 
-        <p class="locked-note">Channel controls are locked until this UID is approved.</p>
+        <p class="locked-note">Channel controls will appear here in the next admin update.</p>
         <button class="text-button" id="signOut" type="button">Sign out</button>
       </section>
     </main>

@@ -1,0 +1,27 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isStationAdmin() {
+      return request.auth != null &&
+        request.auth.uid in [
+          '1t7mv9yXmJYYjpBFn2ar1BgUiVX2',
+          '8G9oQmdk8fUhUYIZMjZ9OtLPZnt2'
+        ];
+    }
+
+    match /channels/{channelId} {
+      allow read: if true;
+      allow create, update, delete: if isStationAdmin();
+
+      match /items/{itemId} {
+        allow read: if true;
+        allow create, update, delete: if isStationAdmin();
+      }
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

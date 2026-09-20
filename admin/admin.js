@@ -5,6 +5,11 @@ import {
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js";
 import { auth, googleProvider } from "../engine/firebase.js";
 
+const ADMIN_UIDS = new Set([
+  "1t7mv9yXmJYYjpBFn2ar1BgUiVX2",
+  "8G9oQmdk8fUhUYIZMjZ9OtLPZnt2",
+]);
+
 const loginPanel = document.querySelector("#loginPanel");
 const identityPanel = document.querySelector("#identityPanel");
 const googleLogin = document.querySelector("#googleLogin");
@@ -18,15 +23,31 @@ function showError(message) {
   authError.textContent = message;
 }
 
+function isAdmin(user) {
+  return Boolean(user && ADMIN_UIDS.has(user.uid));
+}
+
+async function rejectUnauthorizedUser() {
+  loginPanel.hidden = false;
+  identityPanel.hidden = true;
+  await signOut(auth);
+  showError("This Google account is not authorized.");
+}
+
 googleLogin.addEventListener("click", async () => {
   googleLogin.disabled = true;
   showError("");
 
   try {
-    await signInWithPopup(auth, googleProvider);
+    const result = await signInWithPopup(auth, googleProvider);
+    if (!isAdmin(result.user)) await rejectUnauthorizedUser();
   } catch (error) {
     if (error.code !== "auth/popup-closed-by-user") {
-      showError("Google sign-in could not be completed. Check Firebase's authorized domains.");
+      showError(
+        error.code === "auth/unauthorized-domain"
+          ? "This website is not authorized in Firebase."
+          : "Google sign-in could not be completed.",
+      );
       console.error(error);
     }
   } finally {
@@ -49,11 +70,16 @@ copyUidButton.addEventListener("click", async () => {
   }
 });
 
-onAuthStateChanged(auth, (user) => {
-  loginPanel.hidden = Boolean(user);
-  identityPanel.hidden = !user;
+onAuthStateChanged(auth, async (user) => {
+  if (user && !isAdmin(user)) {
+    await rejectUnauthorizedUser();
+    return;
+  }
 
-  if (user) {
+  loginPanel.hidden = isAdmin(user);
+  identityPanel.hidden = !isAdmin(user);
+
+  if (isAdmin(user)) {
     userEmail.textContent = user.email || "Google account";
     userUid.textContent = user.uid;
   } else {
