@@ -79,11 +79,12 @@ button {
 
 .station-console {
   position: relative;
-  width: min(76vw, 760px);
+  width: min(88vw, 940px);
   min-height: clamp(190px, 28vw, 270px);
   display: grid;
-  grid-template-columns: minmax(0, 1.25fr) minmax(180px, 0.75fr);
+  grid-template-columns: minmax(250px, 1fr) auto minmax(190px, 0.72fr);
   align-items: center;
+  gap: clamp(20px, 4vw, 54px);
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
   background:
@@ -107,14 +108,14 @@ button {
 .station-mark {
   display: flex;
   flex-direction: column;
-  padding: 0 clamp(28px, 6vw, 72px);
+  padding-left: clamp(28px, 5vw, 62px);
   pointer-events: none;
 }
 
 .brand {
   color: var(--paper-bright);
   font-family: "Libre Caslon Display", Georgia, serif;
-  font-size: clamp(2rem, 5.3vw, 4.9rem);
+  font-size: clamp(2rem, 4.6vw, 4.25rem);
   line-height: 0.92;
   letter-spacing: -0.045em;
   text-shadow: 0 1px 22px rgba(240, 229, 203, 0.08);
@@ -133,7 +134,8 @@ button {
   position: relative;
   width: clamp(164px, 21vw, 208px);
   min-height: 54px;
-  margin-right: clamp(14px, 3vw, 34px);
+  justify-self: end;
+  margin-right: clamp(18px, 4vw, 48px);
   padding: 0 34px 0 18px;
   overflow: hidden;
   border: 1px solid rgba(216, 201, 169, 0.13);
@@ -236,9 +238,8 @@ button {
 }
 
 .volume-control {
-  position: absolute;
-  left: clamp(-4px, 2vw, 26px);
-  z-index: 3;
+  position: relative;
+  z-index: 1;
   display: grid;
   justify-items: center;
   gap: 10px;
@@ -395,34 +396,31 @@ footer {
 
   .radio-stage {
     padding-left: 0;
-    flex-direction: column;
   }
 
   .station-console {
-    width: min(89vw, 610px);
-    grid-template-columns: 1fr;
-    gap: 30px;
-    min-height: 178px;
-    padding: 30px 24px 26px;
-    order: 1;
+    width: min(94vw, 690px);
+    grid-template-columns: minmax(150px, 1fr) auto minmax(150px, 0.8fr);
+    gap: clamp(12px, 3vw, 24px);
+    min-height: 172px;
+    padding: 22px 16px;
   }
 
   .volume-control {
     position: static;
-    order: 2;
-    margin-top: 20px;
+    margin: 0;
     transform: none;
   }
 
   .station-mark {
-    align-items: center;
+    align-items: flex-start;
     padding: 0;
-    text-align: center;
+    text-align: left;
   }
 
   .channel-field {
-    width: min(208px, 100%);
-    margin: 0 auto;
+    width: min(180px, 100%);
+    margin: 0;
   }
 
   .radio-readout {
@@ -435,6 +433,19 @@ footer {
 @media (max-width: 480px) {
   .station-shell {
     padding: 14px 0;
+  }
+
+  .station-console {
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 18px 20px;
+    min-height: 210px;
+    padding: 24px 20px;
+  }
+
+  .station-mark {
+    grid-column: 1 / -1;
+    align-items: center;
+    text-align: center;
   }
 
   .brand {
@@ -450,12 +461,18 @@ footer {
   }
 
   .volume-control {
-    margin-top: 16px;
+    justify-self: end;
+    margin: 0;
     transform: none;
   }
 
   .volume-dial {
     width: 52px;
+  }
+
+  .channel-field {
+    justify-self: start;
+    width: min(176px, 100%);
   }
 
   .tuning-hint {

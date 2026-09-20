@@ -26,32 +26,30 @@
 
       <section class="radio" aria-label="BENNESSism Music Station">
         <div class="radio-stage">
-          <section class="volume-control" aria-label="Volume control">
-            <span class="control-label">Volume</span>
-            <button
-              class="volume-dial"
-              id="volumeDial"
-              type="button"
-              aria-label="Volume. Drag vertically or use arrow keys."
-              aria-valuemin="0"
-              aria-valuemax="100"
-              aria-valuenow="65"
-              role="slider"
-            >
-              <span class="dial-line" aria-hidden="true"></span>
-            </button>
-            <output class="volume-value" id="volumeValue">65</output>
-          </section>
-
           <div class="station-console">
             <div class="station-mark" aria-hidden="true">
               <span class="brand">BENNESSism</span>
               <span class="subtitle">music station</span>
             </div>
 
-            <div
-              class="channel-field"
-            >
+            <section class="volume-control" aria-label="Volume control">
+              <span class="control-label">Volume</span>
+              <button
+                class="volume-dial"
+                id="volumeDial"
+                type="button"
+                aria-label="Volume. Drag vertically or use arrow keys."
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="65"
+                role="slider"
+              >
+                <span class="dial-line" aria-hidden="true"></span>
+              </button>
+              <output class="volume-value" id="volumeValue">65</output>
+            </section>
+
+            <div class="channel-field">
               <span class="channel-name" id="channelName">Tuning</span>
               <span class="channel-arrows">
                 <button id="channelUp" type="button" aria-label="Next channel">▲</button>
