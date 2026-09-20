@@ -123,16 +123,6 @@
           "linkLabel": ""
         },
         {
-          "filename": "morning-mist-raising.mp3",
-          "title": "Morning Mist Raising",
-          "durationSeconds": 207,
-          "sourceSha": "3c173055e0585ccb1d9073cef4f2f74bdbd9808f",
-          "order": 3,
-          "type": "music",
-          "targetUrl": "",
-          "linkLabel": ""
-        },
-        {
           "filename": "strings-and-waves.mp3",
           "title": "Strings And Waves",
           "durationSeconds": 116.712,
