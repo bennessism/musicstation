@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#17130e" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Station Admin | BENNESSism</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="../icons/favicon-32x32.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Libre+Caslon+Display&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/admin.css" />
+  </head>
+  <body>
+    <main class="admin-shell">
+      <a class="back-link" href="../">← Music station</a>
+
+      <section class="auth-card" id="loginPanel">
+        <p class="eyebrow">BENNESSism transmission</p>
+        <h1>Station administration</h1>
+        <p class="intro">
+          Sign in with the Google account that will own this station. The first step only creates
+          your Firebase identity; channel editing remains locked.
+        </p>
+        <button class="google-button" id="googleLogin" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path fill="#4285f4" d="M21.6 12.2c0-.7-.1-1.5-.2-2.2H12v4.3h5.4a4.6 4.6 0 0 1-2 3v2.8h3.5c2-1.9 3.2-4.6 3.2-7.9Z"/>
+            <path fill="#34a853" d="M12 22c2.9 0 5.3-1 7-2.6l-3.5-2.8c-1 .7-2.2 1-3.5 1-2.7 0-5-1.8-5.8-4.3H2.6v2.9A10.5 10.5 0 0 0 12 22Z"/>
+            <path fill="#fbbc05" d="M6.2 13.3a6.3 6.3 0 0 1 0-3.9v-3H2.6a10.5 10.5 0 0 0 0 9.8l3.6-2.9Z"/>
+            <path fill="#ea4335" d="M12 5.1c1.6 0 3 .6 4.1 1.6l3.1-3A10.4 10.4 0 0 0 2.6 6.4l3.6 3C7 7 9.3 5.1 12 5.1Z"/>
+          </svg>
+          Continue with Google
+        </button>
+        <p class="error-message" id="authError" role="alert"></p>
+      </section>
+
+      <section class="auth-card identity-card" id="identityPanel" hidden>
+        <p class="eyebrow">Identity created</p>
+        <h1>First login complete</h1>
+        <p class="intro">
+          Copy this UID. It will become the only identity allowed to administer the station.
+        </p>
+
+        <div class="identity-row">
+          <span>Google account</span>
+          <strong id="userEmail">—</strong>
+        </div>
+        <div class="uid-block">
+          <span>Firebase UID</span>
+          <code id="userUid">—</code>
+          <button id="copyUid" type="button">Copy UID</button>
+        </div>
+
+        <p class="locked-note">Channel controls are locked until this UID is approved.</p>
+        <button class="text-button" id="signOut" type="button">Sign out</button>
+      </section>
+    </main>
+
+    <script type="module" src="./admin.js"></script>
+  </body>
+</html>

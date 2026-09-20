@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#17130e" />
+    <meta
+      name="description"
+      content="BENNESSism Music Station — turn the dial and tune in."
+    />
+    <title>BENNESSism | Music Station</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./icons/favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="./icons/apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@300;400;500&family=Libre+Caslon+Display&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/station.css" />
+  </head>
+  <body>
+    <main class="station-shell">
+      <p class="eyebrow">Independent Internet Radio</p>
+
+      <section class="radio" aria-label="BENNESSism Music Station">
+        <div class="radio-stage">
+          <section class="volume-control" aria-label="Volume control">
+            <span class="control-label">Volume</span>
+            <button
+              class="volume-dial"
+              id="volumeDial"
+              type="button"
+              aria-label="Volume. Drag vertically or use arrow keys."
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="65"
+              role="slider"
+            >
+              <span class="dial-line" aria-hidden="true"></span>
+            </button>
+            <output class="volume-value" id="volumeValue">65</output>
+          </section>
+
+          <div class="tuner-wrap" id="tunerWrap">
+            <div class="tuner-ring" id="tunerRing" aria-hidden="true"></div>
+
+            <div class="station-mark" aria-hidden="true">
+              <span class="brand">BENNESSism</span>
+              <span class="subtitle">music station</span>
+            </div>
+
+            <button
+              class="channel-window"
+              id="channelWindow"
+              type="button"
+              aria-label="Turn channel dial"
+            >
+              <span class="channel-name" id="channelName">Tuning</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="radio-readout" aria-live="polite">
+          <div class="status-line">
+            <span class="signal-lamp" id="signalLamp" aria-hidden="true"></span>
+            <span id="channelStatus">Standby</span>
+            <span class="status-separator" aria-hidden="true">/</span>
+            <span id="broadcastTime">24 hours</span>
+          </div>
+          <p class="track-title" id="trackTitle">Turn on the station</p>
+          <p class="channel-description" id="channelDescription">
+            Turn the large dial to choose a channel.
+          </p>
+        </div>
+
+        <div class="power-row">
+          <button class="power-switch" id="powerButton" type="button" aria-pressed="false">
+            <span class="power-knob" aria-hidden="true"></span>
+            <span id="powerLabel">Power off</span>
+          </button>
+          <span class="tuning-hint">Drag the large dial to tune</span>
+        </div>
+      </section>
+
+      <footer>
+        <span id="localTime">--:--</span>
+        <span>BENNESSism transmission</span>
+      </footer>
+    </main>
+
+    <audio id="radioAudio" preload="metadata"></audio>
+    <script type="module" src="./js/station.js"></script>
+  </body>
+</html>

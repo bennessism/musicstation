@@ -1,0 +1,21 @@
+{
+  "name": "BENNESSism Music Station",
+  "short_name": "Music Station",
+  "description": "Turn the dial and tune in to BENNESSism Music Station.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#201a12",
+  "theme_color": "#17130e",
+  "icons": [
+    {
+      "src": "./icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "./icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
