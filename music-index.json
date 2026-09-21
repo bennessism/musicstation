@@ -52,26 +52,6 @@
           "linkLabel": ""
         },
         {
-          "filename": "that-sign.mp3",
-          "title": "That Sign",
-          "durationSeconds": 179.856,
-          "sourceSha": "a8a58ad4b64a6ea93317753d2adef164ba9dc508",
-          "order": 2,
-          "type": "music",
-          "targetUrl": "",
-          "linkLabel": ""
-        },
-        {
-          "filename": "woof-woof-best-狗.mp3",
-          "title": "Woof Woof Best 狗",
-          "durationSeconds": 127.032,
-          "sourceSha": "db3fde7fa1ef78dce9d9b1c1dc2bdf8f4dcdff4e",
-          "order": 3,
-          "type": "music",
-          "targetUrl": "",
-          "linkLabel": ""
-        },
-        {
           "filename": "work-sleep-repeat.mp3",
           "title": "Work Sleep Repeat",
           "durationSeconds": 155.76,
