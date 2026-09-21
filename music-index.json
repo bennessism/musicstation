@@ -82,6 +82,16 @@
           "linkLabel": ""
         },
         {
+          "filename": "宝贝.mp3",
+          "title": "宝贝",
+          "durationSeconds": 135.456,
+          "sourceSha": "2d0679c59443fe758a85e2afe6ba346ac4f14129",
+          "order": 5,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
           "filename": "星光下的我们.mp3",
           "title": "星光下的我们",
           "durationSeconds": 150.192,
