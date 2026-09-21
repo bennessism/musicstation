@@ -253,6 +253,16 @@
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
+        },
+        {
+          "filename": "EP003.m4a",
+          "title": "EP003",
+          "durationSeconds": 900.052,
+          "sourceSha": "8b7970af1ec6dbbd2d5b02765946dae42d4e696b",
+          "order": 2,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
         }
       ]
     }
