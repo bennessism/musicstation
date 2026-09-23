@@ -255,6 +255,16 @@
       "hostInfo": "",
       "tracks": [
         {
+          "filename": "pet-slime-bubblegum.mp3",
+          "title": "Pet Slime Bubblegum",
+          "durationSeconds": 176.901,
+          "sourceSha": "3a79d503fcec458694af55f7518ed695e5f37101",
+          "order": 0,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
           "filename": "pet-slime.mp3",
           "title": "Pet Slime",
           "durationSeconds": 176.144,
