@@ -245,6 +245,27 @@
         }
       ]
     },
+    "pet-slime-bgm": {
+      "name": "Pet Slime Bgm",
+      "description": "Independent continuous radio.",
+      "broadcastMode": "always",
+      "scheduleStart": "",
+      "scheduleEnd": "",
+      "hostName": "",
+      "hostInfo": "",
+      "tracks": [
+        {
+          "filename": "petslime.mp3",
+          "title": "Petslime",
+          "durationSeconds": 176.144,
+          "sourceSha": "522264b14dcf06e3194a3d43057ebcb76568a48f",
+          "order": 0,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        }
+      ]
+    },
     "修仙回来（AI短剧）": {
       "name": "修仙回来（AI短剧）",
       "description": "Independent continuous radio.",
