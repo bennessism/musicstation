@@ -246,7 +246,7 @@
       ]
     },
     "pet-slime-bgm": {
-      "name": "Pet Slime Bgm",
+      "name": "Pet Slime BBM",
       "description": "Independent continuous radio.",
       "broadcastMode": "always",
       "scheduleStart": "",
@@ -255,14 +255,24 @@
       "hostInfo": "",
       "tracks": [
         {
+          "filename": "petslime-bubblegum.mp3",
+          "title": "Petslime Bubblegum",
+          "durationSeconds": 176.901,
+          "sourceSha": "3a79d503fcec458694af55f7518ed695e5f37101",
+          "order": 0,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
           "filename": "petslime.mp3",
           "title": "Petslime",
           "durationSeconds": 176.144,
           "sourceSha": "522264b14dcf06e3194a3d43057ebcb76568a48f",
           "order": 0,
           "type": "music",
-          "targetUrl": "",
-          "linkLabel": ""
+          "targetUrl": "https://noagrp.github.io/petslime/",
+          "linkLabel": "Play Pet Slime"
         }
       ]
     },
