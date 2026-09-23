@@ -234,6 +234,16 @@
           "linkLabel": ""
         },
         {
+          "filename": "palms-on-earth.mp3",
+          "title": "Palms On Earth",
+          "durationSeconds": 172.486,
+          "sourceSha": "228a447c2822e3f6ed09a511aad23bc31e0f121a",
+          "order": 3,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
           "filename": "tibetan-singing-bowls.mp3",
           "title": "Tibetan Singing Bowls",
           "durationSeconds": 165.36,
