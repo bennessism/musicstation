@@ -280,16 +280,6 @@
           "durationSeconds": 180.245,
           "sourceSha": "501a84e242e87c6651722fa2b2dce72b116f0faf",
           "order": 2,
-          "type": "music",
-          "targetUrl": "",
-          "linkLabel": ""
-        },
-        {
-          "filename": "pet-slime.mp3",
-          "title": "Pet Slime",
-          "durationSeconds": 176.144,
-          "sourceSha": "522264b14dcf06e3194a3d43057ebcb76568a48f",
-          "order": 2,
           "type": "ad",
           "targetUrl": "https://noagrp.github.io/petslime/",
           "linkLabel": "Play Pet Slime"
@@ -300,9 +290,19 @@
           "durationSeconds": 179.357,
           "sourceSha": "2163e6c161105cf7ac5f6203ab2858bbef55c054",
           "order": 3,
-          "type": "music",
-          "targetUrl": "",
-          "linkLabel": ""
+          "type": "ad",
+          "targetUrl": "https://noagrp.github.io/petslime/",
+          "linkLabel": "Play Pet Slime"
+        },
+        {
+          "filename": "pet-slime.mp3",
+          "title": "Pet Slime",
+          "durationSeconds": 176.144,
+          "sourceSha": "522264b14dcf06e3194a3d43057ebcb76568a48f",
+          "order": 4,
+          "type": "ad",
+          "targetUrl": "https://noagrp.github.io/petslime/",
+          "linkLabel": "Play Pet Slime"
         }
       ]
     },
