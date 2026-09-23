@@ -275,6 +275,16 @@
           "linkLabel": "Play Pet Slime"
         },
         {
+          "filename": "pet-slime-lazy-afternoon.mp3",
+          "title": "Pet Slime Lazy Afternoon",
+          "durationSeconds": 180.245,
+          "sourceSha": "501a84e242e87c6651722fa2b2dce72b116f0faf",
+          "order": 2,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
           "filename": "pet-slime.mp3",
           "title": "Pet Slime",
           "durationSeconds": 176.144,
@@ -283,6 +293,16 @@
           "type": "ad",
           "targetUrl": "https://noagrp.github.io/petslime/",
           "linkLabel": "Play Pet Slime"
+        },
+        {
+          "filename": "pet-slime-the-rubber-pavement.mp3",
+          "title": "Pet Slime The Rubber Pavement",
+          "durationSeconds": 179.357,
+          "sourceSha": "2163e6c161105cf7ac5f6203ab2858bbef55c054",
+          "order": 3,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
         }
       ]
     },
