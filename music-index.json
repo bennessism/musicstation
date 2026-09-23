@@ -273,6 +273,16 @@
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
+        },
+        {
+          "filename": "petslime-bubblegum.mp3",
+          "title": "Petslime Bubblegum",
+          "durationSeconds": 176.901,
+          "sourceSha": "3a79d503fcec458694af55f7518ed695e5f37101",
+          "order": 2,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
         }
       ]
     },
