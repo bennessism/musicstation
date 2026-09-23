@@ -204,6 +204,16 @@
           "linkLabel": ""
         },
         {
+          "filename": "harmonic-resonance.mp3",
+          "title": "Harmonic Resonance",
+          "durationSeconds": 156.212,
+          "sourceSha": "5333d18ad9dfd938c834259fb72d31606d99100a",
+          "order": 1,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
           "filename": "meditation-with-the-birds.mp3",
           "title": "Meditation With The Birds",
           "durationSeconds": 173.976,
