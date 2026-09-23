@@ -255,21 +255,31 @@
       "hostInfo": "",
       "tracks": [
         {
+          "filename": "pet-slime-beneath-the-pressure.mp3",
+          "title": "Pet Slime Beneath The Pressure",
+          "durationSeconds": 170.815,
+          "sourceSha": "2e26248af0752aa4c210f749b782ca803cd53b49",
+          "order": 0,
+          "type": "ad",
+          "targetUrl": "https://noagrp.github.io/petslime/",
+          "linkLabel": "Play Pet Slime"
+        },
+        {
           "filename": "pet-slime-bubblegum.mp3",
           "title": "Pet Slime Bubblegum",
           "durationSeconds": 176.901,
           "sourceSha": "3a79d503fcec458694af55f7518ed695e5f37101",
-          "order": 0,
-          "type": "music",
-          "targetUrl": "",
-          "linkLabel": ""
+          "order": 1,
+          "type": "ad",
+          "targetUrl": "https://noagrp.github.io/petslime/",
+          "linkLabel": "Play Pet Slime"
         },
         {
           "filename": "pet-slime.mp3",
           "title": "Pet Slime",
           "durationSeconds": 176.144,
           "sourceSha": "522264b14dcf06e3194a3d43057ebcb76568a48f",
-          "order": 0,
+          "order": 2,
           "type": "ad",
           "targetUrl": "https://noagrp.github.io/petslime/",
           "linkLabel": "Play Pet Slime"
