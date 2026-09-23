@@ -245,6 +245,27 @@
         }
       ]
     },
+    "petslime": {
+      "name": "Petslime",
+      "description": "Independent continuous radio.",
+      "broadcastMode": "always",
+      "scheduleStart": "",
+      "scheduleEnd": "",
+      "hostName": "",
+      "hostInfo": "",
+      "tracks": [
+        {
+          "filename": "petslime-beneath-the-pressure.mp3",
+          "title": "Petslime Beneath The Pressure",
+          "durationSeconds": 170.815,
+          "sourceSha": "2e26248af0752aa4c210f749b782ca803cd53b49",
+          "order": 0,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        }
+      ]
+    },
     "修仙回来（AI短剧）": {
       "name": "修仙回来（AI短剧）",
       "description": "Independent continuous radio.",
