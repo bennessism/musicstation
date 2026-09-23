@@ -283,6 +283,16 @@
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
+        },
+        {
+          "filename": "petslime-the-rubber-pavement.mp3",
+          "title": "Petslime The Rubber Pavement",
+          "durationSeconds": 179.357,
+          "sourceSha": "2163e6c161105cf7ac5f6203ab2858bbef55c054",
+          "order": 3,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
         }
       ]
     },
