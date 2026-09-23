@@ -285,11 +285,21 @@
           "linkLabel": ""
         },
         {
+          "filename": "petslime-lazy-afternoon.mp3",
+          "title": "Petslime Lazy Afternoon",
+          "durationSeconds": 180.245,
+          "sourceSha": "501a84e242e87c6651722fa2b2dce72b116f0faf",
+          "order": 3,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
           "filename": "petslime-the-rubber-pavement.mp3",
           "title": "Petslime The Rubber Pavement",
           "durationSeconds": 179.357,
           "sourceSha": "2163e6c161105cf7ac5f6203ab2858bbef55c054",
-          "order": 3,
+          "order": 4,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
