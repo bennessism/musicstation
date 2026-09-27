@@ -295,6 +295,16 @@
           "linkLabel": "Play Pet Slime"
         },
         {
+          "filename": "pet-slime-feeding-time.mp3",
+          "title": "Pet Slime Feeding Time",
+          "durationSeconds": 180.219,
+          "sourceSha": "365cc74dc6087d5928743ce514e2545160f072a6",
+          "order": 2,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
           "filename": "pet-slime-lazy-afternoon.mp3",
           "title": "Pet Slime Lazy Afternoon",
           "durationSeconds": 180.245,
@@ -313,6 +323,16 @@
           "type": "ad",
           "targetUrl": "https://noagrp.github.io/petslime/",
           "linkLabel": "Play Pet Slime"
+        },
+        {
+          "filename": "pet-slime-sun-drenched-garden-path.mp3",
+          "title": "Pet Slime Sun Drenched Garden Path",
+          "durationSeconds": 172.643,
+          "sourceSha": "cba9f3601bad57160ed555fff1be1c970a4a79e4",
+          "order": 4,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
         },
         {
           "filename": "pet-slime.mp3",
