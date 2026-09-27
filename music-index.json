@@ -32,21 +32,11 @@
       "hostInfo": "",
       "tracks": [
         {
-          "filename": "a-late-night-drive.mp3",
-          "title": "A Late Night Drive",
-          "durationSeconds": 232.032,
-          "sourceSha": "fb923f33fa49219b12c99e1bbda68db22104a13b",
-          "order": 0,
-          "type": "music",
-          "targetUrl": "",
-          "linkLabel": ""
-        },
-        {
           "filename": "midnight-at-the-gallows.mp3",
           "title": "Midnight At The Gallows",
           "durationSeconds": 178.26,
           "sourceSha": "e80bc1212fd20f25c810fbb97d7bc4bb2e5f4889",
-          "order": 1,
+          "order": 0,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
