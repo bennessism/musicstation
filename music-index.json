@@ -32,10 +32,10 @@
       "hostInfo": "",
       "tracks": [
         {
-          "filename": "midnight-at-the-gallows.mp3",
-          "title": "Midnight At The Gallows",
-          "durationSeconds": 178.26,
-          "sourceSha": "e80bc1212fd20f25c810fbb97d7bc4bb2e5f4889",
+          "filename": "the-gate.mp3",
+          "title": "The Gate",
+          "durationSeconds": 156.839,
+          "sourceSha": "b6eb9df5974e670e0b0fcb09bf2dc7624210155e",
           "order": 0,
           "type": "music",
           "targetUrl": "",
