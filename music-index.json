@@ -22,6 +22,37 @@
         }
       ]
     },
+    "edm": {
+      "name": "Edm",
+      "description": "Independent continuous radio.",
+      "broadcastMode": "always",
+      "scheduleStart": "",
+      "scheduleEnd": "",
+      "hostName": "",
+      "hostInfo": "",
+      "tracks": [
+        {
+          "filename": "a-late-night-drive.mp3",
+          "title": "A Late Night Drive",
+          "durationSeconds": 232.032,
+          "sourceSha": "fb923f33fa49219b12c99e1bbda68db22104a13b",
+          "order": 0,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
+          "filename": "warehouse-gravity.mp3",
+          "title": "Warehouse Gravity",
+          "durationSeconds": 161.933,
+          "sourceSha": "65df70568b99e58deee95b73f7fcad74a1f79025",
+          "order": 1,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        }
+      ]
+    },
     "featured": {
       "name": "Featured",
       "description": "Favorite songs.",
