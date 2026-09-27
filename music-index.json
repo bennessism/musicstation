@@ -113,6 +113,16 @@
       "hostInfo": "",
       "tracks": [
         {
+          "filename": "beneath-the-crypt.mp3",
+          "title": "Beneath The Crypt",
+          "durationSeconds": 175.412,
+          "sourceSha": "43509cda85a01448d0b95e134a676ae892442c95",
+          "order": 0,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
           "filename": "cathedral-of-bitter-rain.mp3",
           "title": "Cathedral Of Bitter Rain",
           "durationSeconds": 175.647,
@@ -143,21 +153,21 @@
           "linkLabel": ""
         },
         {
-          "filename": "monolith.mp3",
-          "title": "Monolith",
-          "durationSeconds": 174.237,
-          "sourceSha": "878f5f5844673704246b67783f858df359b64ed9",
+          "filename": "the-pale-chapel-at-midnight.mp3",
+          "title": "The Pale Chapel At Midnight",
+          "durationSeconds": 182.7,
+          "sourceSha": "b144ab4fd76927ba4a66c6218648b9b8473d027b",
           "order": 3,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
         },
         {
-          "filename": "the-pale-chapel-at-midnight.mp3",
-          "title": "The Pale Chapel At Midnight",
-          "durationSeconds": 182.7,
-          "sourceSha": "b144ab4fd76927ba4a66c6218648b9b8473d027b",
-          "order": 3,
+          "filename": "monolith.mp3",
+          "title": "Monolith",
+          "durationSeconds": 174.237,
+          "sourceSha": "878f5f5844673704246b67783f858df359b64ed9",
+          "order": 4,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
