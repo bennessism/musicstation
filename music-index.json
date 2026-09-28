@@ -184,31 +184,11 @@
           "linkLabel": ""
         },
         {
-          "filename": "clock.mp3",
-          "title": "Clock",
-          "durationSeconds": 154.08,
-          "sourceSha": "2758af20ad0af77286207b00173639aea0fd523b",
-          "order": 0,
-          "type": "music",
-          "targetUrl": "",
-          "linkLabel": ""
-        },
-        {
           "filename": "harmonic-resonance.mp3",
           "title": "Harmonic Resonance",
           "durationSeconds": 156.212,
           "sourceSha": "5333d18ad9dfd938c834259fb72d31606d99100a",
           "order": 1,
-          "type": "music",
-          "targetUrl": "",
-          "linkLabel": ""
-        },
-        {
-          "filename": "meditation-with-the-birds.mp3",
-          "title": "Meditation With The Birds",
-          "durationSeconds": 173.976,
-          "sourceSha": "c95eee0a16e54a7814cb80918d1e65125ec4b67e",
-          "order": 2,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -224,31 +204,11 @@
           "linkLabel": ""
         },
         {
-          "filename": "strings-and-waves.mp3",
-          "title": "Strings And Waves",
-          "durationSeconds": 116.712,
-          "sourceSha": "a44b32b31a98ff51a24af1b00aa72c0b2d3800c3",
-          "order": 4,
-          "type": "music",
-          "targetUrl": "",
-          "linkLabel": ""
-        },
-        {
-          "filename": "tibetan-singing-bowls.mp3",
-          "title": "Tibetan Singing Bowls",
-          "durationSeconds": 165.36,
-          "sourceSha": "227c196e371cc8c362955da0df0bf8ee5fb365f7",
-          "order": 5,
-          "type": "music",
-          "targetUrl": "",
-          "linkLabel": ""
-        },
-        {
           "filename": "the-sculpted-meridian.mp3",
           "title": "The Sculpted Meridian",
           "durationSeconds": 164.989,
           "sourceSha": "dcce01954fa71f1180a396670b8797aa7a084139",
-          "order": 6,
+          "order": 3,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
