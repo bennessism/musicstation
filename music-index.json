@@ -133,6 +133,16 @@
           "linkLabel": ""
         },
         {
+          "filename": "sanctuary-of-pale-light.mp3",
+          "title": "Sanctuary Of Pale Light",
+          "durationSeconds": 166.531,
+          "sourceSha": "ece4560984d22009e661a214abd49f5e36d907c7",
+          "order": 5,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
           "filename": "the-weight-of-marble.mp3",
           "title": "The Weight Of Marble",
           "durationSeconds": 161.985,
