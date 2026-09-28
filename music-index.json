@@ -77,7 +77,7 @@
           "title": "Cathedral Of Bitter Rain",
           "durationSeconds": 175.647,
           "sourceSha": "508a24d2867966fd6796c04d8a1f89a755d3f120",
-          "order": 0,
+          "order": 1,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -87,7 +87,7 @@
           "title": "Cold Stone Altars",
           "durationSeconds": 174.211,
           "sourceSha": "af3739b85b1a4c99fd40091f3d0e13a60dd2193d",
-          "order": 1,
+          "order": 2,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -97,16 +97,6 @@
           "title": "Measured Knocks In Stone",
           "durationSeconds": 158.328,
           "sourceSha": "0ee29e5d3b59df5a0f1d2b6f3bb981f34c32df48",
-          "order": 2,
-          "type": "music",
-          "targetUrl": "",
-          "linkLabel": ""
-        },
-        {
-          "filename": "the-pale-chapel-at-midnight.mp3",
-          "title": "The Pale Chapel At Midnight",
-          "durationSeconds": 182.7,
-          "sourceSha": "b144ab4fd76927ba4a66c6218648b9b8473d027b",
           "order": 3,
           "type": "music",
           "targetUrl": "",
@@ -123,16 +113,6 @@
           "linkLabel": ""
         },
         {
-          "filename": "the-rain-soaked-nave.mp3",
-          "title": "The Rain Soaked Nave",
-          "durationSeconds": 154.88,
-          "sourceSha": "ffc47bc54f40207ce92564c0350eb19cca62b8cc",
-          "order": 4,
-          "type": "music",
-          "targetUrl": "",
-          "linkLabel": ""
-        },
-        {
           "filename": "sanctuary-of-pale-light.mp3",
           "title": "Sanctuary Of Pale Light",
           "durationSeconds": 166.531,
@@ -143,11 +123,31 @@
           "linkLabel": ""
         },
         {
+          "filename": "the-pale-chapel-at-midnight.mp3",
+          "title": "The Pale Chapel At Midnight",
+          "durationSeconds": 182.7,
+          "sourceSha": "b144ab4fd76927ba4a66c6218648b9b8473d027b",
+          "order": 6,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
+          "filename": "the-rain-soaked-nave.mp3",
+          "title": "The Rain Soaked Nave",
+          "durationSeconds": 154.88,
+          "sourceSha": "ffc47bc54f40207ce92564c0350eb19cca62b8cc",
+          "order": 7,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
           "filename": "the-weight-of-marble.mp3",
           "title": "The Weight Of Marble",
           "durationSeconds": 161.985,
           "sourceSha": "438937eeb64948e3dc40c0d3c3d1202bacd69330",
-          "order": 5,
+          "order": 8,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -157,7 +157,7 @@
           "title": "Twilight At The Iron Gate",
           "durationSeconds": 156.212,
           "sourceSha": "2700a8fbab4c0c24b89935c60e84fa56d413ec0d",
-          "order": 6,
+          "order": 9,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -198,7 +198,7 @@
           "title": "Palms On Earth",
           "durationSeconds": 172.486,
           "sourceSha": "228a447c2822e3f6ed09a511aad23bc31e0f121a",
-          "order": 3,
+          "order": 2,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -218,7 +218,17 @@
           "title": "Tidal Breath",
           "durationSeconds": 176.457,
           "sourceSha": "c4d3f222b611e5e1bf592078d2cb735f3bccb769",
-          "order": 6,
+          "order": 4,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
+          "filename": "where-the-sunlight-touches.mp3",
+          "title": "Where The Sunlight Touches",
+          "durationSeconds": 174.393,
+          "sourceSha": "401ff2268e48e08264cfd2b8526aafb1cd439b88",
+          "order": 5,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
