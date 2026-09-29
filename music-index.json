@@ -46,16 +46,6 @@
           "title": "The Gate",
           "durationSeconds": 156.839,
           "sourceSha": "b6eb9df5974e670e0b0fcb09bf2dc7624210155e",
-          "order": 0,
-          "type": "music",
-          "targetUrl": "",
-          "linkLabel": ""
-        },
-        {
-          "filename": "warehouse-gravity.mp3",
-          "title": "Warehouse Gravity",
-          "durationSeconds": 161.933,
-          "sourceSha": "65df70568b99e58deee95b73f7fcad74a1f79025",
           "order": 1,
           "type": "music",
           "targetUrl": "",
@@ -77,6 +67,16 @@
           "durationSeconds": 178.495,
           "sourceSha": "d26a990ee382555454bb104b0aac6088f3acf061",
           "order": 3,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
+          "filename": "warehouse-gravity.mp3",
+          "title": "Warehouse Gravity",
+          "durationSeconds": 161.933,
+          "sourceSha": "65df70568b99e58deee95b73f7fcad74a1f79025",
+          "order": 4,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
