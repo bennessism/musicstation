@@ -232,6 +232,16 @@
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
+        },
+        {
+          "filename": "yoga-and-purr.mp3",
+          "title": "Yoga And Purr",
+          "durationSeconds": 172.199,
+          "sourceSha": "637e5b655388ed106beb6a969059f6ceacb043f7",
+          "order": 6,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
         }
       ]
     },
