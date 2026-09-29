@@ -32,21 +32,21 @@
       "hostInfo": "",
       "tracks": [
         {
-          "filename": "the-gate.mp3",
-          "title": "The Gate",
-          "durationSeconds": 156.839,
-          "sourceSha": "b6eb9df5974e670e0b0fcb09bf2dc7624210155e",
+          "filename": "golden-hour-rush.mp3",
+          "title": "Golden Hour Rush",
+          "durationSeconds": 175.7,
+          "sourceSha": "713bbbf254a3171fa90934c49e1f03e41eb3fe34",
           "order": 0,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
         },
         {
-          "filename": "the-impact.mp3",
-          "title": "The Impact",
-          "durationSeconds": 181.055,
-          "sourceSha": "cc6ae5782bb527c10054b53585cc28d433f60e43",
-          "order": 1,
+          "filename": "the-gate.mp3",
+          "title": "The Gate",
+          "durationSeconds": 156.839,
+          "sourceSha": "b6eb9df5974e670e0b0fcb09bf2dc7624210155e",
+          "order": 0,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -62,11 +62,21 @@
           "linkLabel": ""
         },
         {
+          "filename": "the-impact.mp3",
+          "title": "The Impact",
+          "durationSeconds": 181.055,
+          "sourceSha": "cc6ae5782bb527c10054b53585cc28d433f60e43",
+          "order": 2,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
           "filename": "tremor.mp3",
           "title": "Tremor",
           "durationSeconds": 178.495,
           "sourceSha": "d26a990ee382555454bb104b0aac6088f3acf061",
-          "order": 2,
+          "order": 3,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
