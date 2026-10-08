@@ -204,26 +204,6 @@
       "hostInfo": "",
       "tracks": [
         {
-          "filename": "breath-of-the-morning.mp3",
-          "title": "Breath Of The Morning",
-          "durationSeconds": 164.519,
-          "sourceSha": "40d5756082408669f7108afba6467faec6c0639b",
-          "order": 0,
-          "type": "music",
-          "targetUrl": "",
-          "linkLabel": ""
-        },
-        {
-          "filename": "harmonic-resonance.mp3",
-          "title": "Harmonic Resonance",
-          "durationSeconds": 156.212,
-          "sourceSha": "5333d18ad9dfd938c834259fb72d31606d99100a",
-          "order": 1,
-          "type": "music",
-          "targetUrl": "",
-          "linkLabel": ""
-        },
-        {
           "filename": "palms-on-earth.mp3",
           "title": "Palms On Earth",
           "durationSeconds": 172.486,
@@ -234,31 +214,11 @@
           "linkLabel": ""
         },
         {
-          "filename": "the-sculpted-meridian.mp3",
-          "title": "The Sculpted Meridian",
-          "durationSeconds": 164.989,
-          "sourceSha": "dcce01954fa71f1180a396670b8797aa7a084139",
-          "order": 3,
-          "type": "music",
-          "targetUrl": "",
-          "linkLabel": ""
-        },
-        {
           "filename": "tidal-breath.mp3",
           "title": "Tidal Breath",
           "durationSeconds": 176.457,
           "sourceSha": "c4d3f222b611e5e1bf592078d2cb735f3bccb769",
           "order": 4,
-          "type": "music",
-          "targetUrl": "",
-          "linkLabel": ""
-        },
-        {
-          "filename": "where-the-sunlight-touches.mp3",
-          "title": "Where The Sunlight Touches",
-          "durationSeconds": 174.393,
-          "sourceSha": "401ff2268e48e08264cfd2b8526aafb1cd439b88",
-          "order": 5,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
