@@ -208,7 +208,17 @@
           "title": "Palms On Earth",
           "durationSeconds": 172.486,
           "sourceSha": "228a447c2822e3f6ed09a511aad23bc31e0f121a",
-          "order": 2,
+          "order": 0,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
+          "filename": "roots-in-the-clay.mp3",
+          "title": "Roots In The Clay",
+          "durationSeconds": 172.147,
+          "sourceSha": "e408db69cacdba3d682d17b26b5ac5f350957e56",
+          "order": 1,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -218,7 +228,7 @@
           "title": "Tidal Breath",
           "durationSeconds": 176.457,
           "sourceSha": "c4d3f222b611e5e1bf592078d2cb735f3bccb769",
-          "order": 4,
+          "order": 2,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -228,7 +238,7 @@
           "title": "Yoga And Purr",
           "durationSeconds": 172.199,
           "sourceSha": "637e5b655388ed106beb6a969059f6ceacb043f7",
-          "order": 6,
+          "order": 3,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
