@@ -46,7 +46,7 @@
           "title": "Golden Hour Rush",
           "durationSeconds": 175.7,
           "sourceSha": "713bbbf254a3171fa90934c49e1f03e41eb3fe34",
-          "order": 0,
+          "order": 1,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -56,7 +56,7 @@
           "title": "The Gate",
           "durationSeconds": 156.839,
           "sourceSha": "b6eb9df5974e670e0b0fcb09bf2dc7624210155e",
-          "order": 1,
+          "order": 2,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -66,7 +66,7 @@
           "title": "The Impact",
           "durationSeconds": 175.621,
           "sourceSha": "0aeb0ac5e3b9bd29e850b29a6ed2d4cc5912c5c7",
-          "order": 2,
+          "order": 3,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -76,7 +76,7 @@
           "title": "Tremor",
           "durationSeconds": 178.286,
           "sourceSha": "4db7f148a6d4d39a0b568fae433116a4586a3866",
-          "order": 3,
+          "order": 4,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -86,7 +86,7 @@
           "title": "Warehouse Gravity",
           "durationSeconds": 161.933,
           "sourceSha": "65df70568b99e58deee95b73f7fcad74a1f79025",
-          "order": 4,
+          "order": 5,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -320,16 +320,16 @@
           "durationSeconds": 178.651,
           "sourceSha": "c80d6a9e1241bc0416a17c80ccbde3d287795744",
           "order": 4,
-          "type": "music",
-          "targetUrl": "",
-          "linkLabel": ""
+          "type": "ad",
+          "targetUrl": "https://noagrp.github.io/petslime/",
+          "linkLabel": "Play Pet Slime"
         },
         {
           "filename": "pet-slime-sun-drenched-garden-path.mp3",
           "title": "Pet Slime Sun Drenched Garden Path",
           "durationSeconds": 172.643,
           "sourceSha": "cba9f3601bad57160ed555fff1be1c970a4a79e4",
-          "order": 4,
+          "order": 5,
           "type": "ad",
           "targetUrl": "https://noagrp.github.io/petslime/",
           "linkLabel": "Play Pet Slime"
@@ -339,7 +339,7 @@
           "title": "Pet Slime The Rubber Pavement",
           "durationSeconds": 179.357,
           "sourceSha": "2163e6c161105cf7ac5f6203ab2858bbef55c054",
-          "order": 5,
+          "order": 6,
           "type": "ad",
           "targetUrl": "https://noagrp.github.io/petslime/",
           "linkLabel": "Play Pet Slime"
@@ -349,7 +349,7 @@
           "title": "Pet Slime",
           "durationSeconds": 176.144,
           "sourceSha": "522264b14dcf06e3194a3d43057ebcb76568a48f",
-          "order": 6,
+          "order": 7,
           "type": "ad",
           "targetUrl": "https://noagrp.github.io/petslime/",
           "linkLabel": "Play Pet Slime"
