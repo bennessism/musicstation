@@ -106,7 +106,7 @@ async function loadFromGitHub() {
 }
 
 async function loadFromIndex() {
-  const response = await fetch(INDEX_URL, { cache: "no-cache" });
+  const response = await fetch(INDEX_URL, { cache: "no-store" });
   if (!response.ok) throw new Error(`Music index returned ${response.status}`);
 
   const index = await response.json();
