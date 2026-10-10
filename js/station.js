@@ -133,11 +133,18 @@ async function start() {
       });
   }
 
-  const channels = await loadChannels();
-  radio.setChannels(channels);
-  activeIndex = radio.channelIndex;
-
-  if (resumeExpected) radio.powerOn();
+  try {
+    const channels = await loadChannels();
+    radio.setChannels(channels);
+    activeIndex = radio.channelIndex;
+    if (resumeExpected) radio.powerOn();
+  } catch (error) {
+    console.error("Current playlist unavailable:", error);
+    elements.channelName.textContent = "Offline";
+    elements.channelStatus.textContent = "Connection required";
+    elements.trackTitle.textContent = "Connect to the internet and reopen MusicStation";
+    elements.channelDescription.textContent = "MusicStation only plays the current online playlist.";
+  }
 }
 
 start();
