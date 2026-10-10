@@ -120,9 +120,11 @@ async function start() {
   if (resumeExpected) radio.powerOn();
 
   if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("./service-worker.js").catch((error) => {
-      console.warn("Offline shell unavailable.", error);
-    });
+    navigator.serviceWorker.register("./service-worker.js", { updateViaCache: "none" })
+      .then((registration) => registration.update())
+      .catch((error) => {
+        console.warn("Offline shell unavailable.", error);
+      });
   }
 }
 
