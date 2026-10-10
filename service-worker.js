@@ -1,4 +1,4 @@
-const CACHE_NAME = "bennessism-station-v21";
+const CACHE_NAME = "bennessism-station-v22";
 const PLAYLIST_CACHE = "bennessism-station-playlist-v1";
 const APP_SHELL = [
   "./",
@@ -46,8 +46,9 @@ self.addEventListener("fetch", (event) => {
       fetch(event.request, { cache: "no-store" })
         .then((response) => {
           if (response.ok) {
+            const cachedCopy = response.clone();
             event.waitUntil(
-              caches.open(PLAYLIST_CACHE).then((cache) => cache.put(event.request, response.clone())),
+              caches.open(PLAYLIST_CACHE).then((cache) => cache.put(event.request, cachedCopy)),
             );
           }
           return response;
