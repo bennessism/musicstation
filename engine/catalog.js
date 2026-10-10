@@ -155,5 +155,5 @@ export async function loadChannels() {
     console.warn("Using the built-in station catalog.", error);
   }
 
-  return FALLBACK_CHANNELS.map(decorateChannel);
+  throw new Error("MusicStation requires an internet connection to load the current playlist.");
 }
