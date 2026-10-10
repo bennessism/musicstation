@@ -113,19 +113,31 @@ async function start() {
   updateClock();
   setInterval(updateClock, 15_000);
 
-  const channels = await loadChannels();
-  radio.setChannels(channels);
-  activeIndex = radio.channelIndex;
-
-  if (resumeExpected) radio.powerOn();
-
   if ("serviceWorker" in navigator) {
+    // A new controller means the installed app has received new application code.
+    // Reload an idle app once to actually run that code; never interrupt audio.
+    const reloadKey = "bennessism-pwa-update-reloading";
+    const wasUpdateReload = sessionStorage.getItem(reloadKey) === "1";
+    sessionStorage.removeItem(reloadKey);
+    let handledControllerChange = false;
+    navigator.serviceWorker.addEventListener("controllerchange", () => {
+      if (handledControllerChange || wasUpdateReload || !radio.audio.paused) return;
+      handledControllerChange = true;
+      sessionStorage.setItem(reloadKey, "1");
+      location.reload();
+    });
     navigator.serviceWorker.register("./service-worker.js", { updateViaCache: "none" })
       .then((registration) => registration.update())
       .catch((error) => {
         console.warn("Offline shell unavailable.", error);
       });
   }
+
+  const channels = await loadChannels();
+  radio.setChannels(channels);
+  activeIndex = radio.channelIndex;
+
+  if (resumeExpected) radio.powerOn();
 }
 
 start();
