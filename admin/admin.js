@@ -11,7 +11,7 @@ import {
   serverTimestamp,
   writeBatch,
 } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js";
-import { loadChannels } from "../engine/catalog.js";
+import { scanGitHubChannels } from "../engine/catalog.js";
 import { auth, db, googleProvider } from "../engine/firebase.js";
 
 const loginPanel = document.querySelector("#loginPanel");
@@ -196,7 +196,7 @@ async function scanChannels({ keepSelection = true } = {}) {
   setFormMessage("Scanning GitHub music folders…");
 
   try {
-    channels = await loadChannels();
+    channels = await scanGitHubChannels();
     channelSelect.replaceChildren(
       ...channels.map((channel) => {
         const option = document.createElement("option");
@@ -273,7 +273,7 @@ async function saveChannelSettings(event) {
     });
 
     await batch.commit();
-    setFormMessage("Channel saved. Public details refresh from GitHub within 15 minutes.", "success");
+    setFormMessage("Channel saved to Firebase. The scheduled GitHub index build will publish these settings; folder changes also trigger builds.", "success");
   } catch (error) {
     console.error(error);
     setFormMessage("Could not save. Check that the Firestore rules were published.", "error");
