@@ -1,4 +1,4 @@
-const CACHE_NAME = "bennessism-station-v19";
+const CACHE_NAME = "bennessism-station-v20";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -36,12 +36,36 @@ self.addEventListener("activate", (event) => {
 self.addEventListener("fetch", (event) => {
   if (event.request.method !== "GET" || event.request.destination === "audio") return;
 
+  const url = new URL(event.request.url);
+  const isMusicIndex = url.origin === self.location.origin && url.pathname.endsWith("/music-index.json");
+
+  if (isMusicIndex) {
+    // Always check the published index on each visit; keep the last good copy offline.
+    event.respondWith(
+      fetch(event.request, { cache: "no-store" })
+        .then((response) => {
+          if (response.ok) {
+            event.waitUntil(
+              caches.open(CACHE_NAME).then((cache) => cache.put(event.request, response.clone())),
+            );
+          }
+          return response;
+        })
+        .catch(async () => {
+          const cached = await caches.match(event.request);
+          if (cached) return cached;
+          throw new Error("Music index unavailable offline");
+        }),
+    );
+    return;
+  }
+
   event.respondWith(
     fetch(event.request)
       .then((response) => {
-        if (response.ok && new URL(event.request.url).origin === self.location.origin) {
+        if (response.ok && url.origin === self.location.origin) {
           const copy = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy));
+          event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy)));
         }
         return response;
       })
