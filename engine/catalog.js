@@ -71,6 +71,7 @@ function decorateChannel(channel) {
 
 async function fetchJson(url) {
   const response = await fetch(url, {
+    cache: "no-store",
     headers: { Accept: "application/vnd.github+json" },
   });
 
@@ -81,7 +82,7 @@ async function fetchJson(url) {
   return response.json();
 }
 
-async function loadFromGitHub() {
+export async function scanGitHubChannels() {
   const rootItems = await fetchJson(API_ROOT);
   const folders = rootItems.filter((item) => item.type === "dir");
 
@@ -148,7 +149,7 @@ export async function loadChannels() {
   }
 
   try {
-    const channels = await loadFromGitHub();
+    const channels = await scanGitHubChannels();
     if (channels.length) return channels;
   } catch (error) {
     console.warn("Using the built-in station catalog.", error);
