@@ -36,6 +36,16 @@
           "title": "Golden Hour Rush",
           "durationSeconds": 175.7,
           "sourceSha": "713bbbf254a3171fa90934c49e1f03e41eb3fe34",
+          "order": 0,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
+          "filename": "redline-torque.mp3",
+          "title": "Redline Torque",
+          "durationSeconds": 159.112,
+          "sourceSha": "88b8260f09f44b11712e050d9f1e0bd7a53b8381",
           "order": 1,
           "type": "music",
           "targetUrl": "",
