@@ -52,6 +52,16 @@
           "linkLabel": ""
         },
         {
+          "filename": "solitude.mp3",
+          "title": "Solitude",
+          "durationSeconds": 178.756,
+          "sourceSha": "9daea14bf57abfe8ba68ca889b7146fcb7ef711d",
+          "order": 2,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
           "filename": "the-gate.mp3",
           "title": "The Gate",
           "durationSeconds": 156.839,
