@@ -66,7 +66,7 @@
           "title": "The Gate",
           "durationSeconds": 156.839,
           "sourceSha": "b6eb9df5974e670e0b0fcb09bf2dc7624210155e",
-          "order": 2,
+          "order": 3,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -76,7 +76,7 @@
           "title": "The Impact",
           "durationSeconds": 175.621,
           "sourceSha": "0aeb0ac5e3b9bd29e850b29a6ed2d4cc5912c5c7",
-          "order": 3,
+          "order": 4,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -86,7 +86,7 @@
           "title": "Tremor",
           "durationSeconds": 178.286,
           "sourceSha": "4db7f148a6d4d39a0b568fae433116a4586a3866",
-          "order": 4,
+          "order": 5,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
@@ -96,7 +96,7 @@
           "title": "Warehouse Gravity",
           "durationSeconds": 161.933,
           "sourceSha": "65df70568b99e58deee95b73f7fcad74a1f79025",
-          "order": 5,
+          "order": 6,
           "type": "music",
           "targetUrl": "",
           "linkLabel": ""
