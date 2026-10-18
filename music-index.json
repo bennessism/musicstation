@@ -335,6 +335,16 @@
           "linkLabel": "Play Pet Slime"
         },
         {
+          "filename": "pet-slime-midnight-velvet.mp3",
+          "title": "Pet Slime Midnight Velvet",
+          "durationSeconds": 166.896,
+          "sourceSha": "1df2bb8c0e90fb122463d79612f52fdc86470882",
+          "order": 4,
+          "type": "music",
+          "targetUrl": "",
+          "linkLabel": ""
+        },
+        {
           "filename": "pet-slime-splash.mp3",
           "title": "Pet Slime Splash",
           "durationSeconds": 178.651,
